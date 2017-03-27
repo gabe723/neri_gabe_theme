@@ -17,7 +17,7 @@
  *
  * @package WordPress
  */
-// wp-admin pw: 3nd5kAh*flNoNJYatP
+// wp-admin pw: fyUmVI@!qChN4tsjTD7J2wLq
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'gabe_theme');
@@ -26,7 +26,7 @@ define('DB_NAME', 'gabe_theme');
 define('DB_USER', 'gn_theme');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'gEukfakrBtkaX0KA');
+define('DB_PASSWORD', 'aK46QKUXdG3f8wCJ');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
