@@ -1,0 +1,586 @@
+/*
+Theme Name: Amazing Shop Lite
+Theme URI: http://webpagewithinstructions.example.com
+Description: A WooCommerce enabled theme available free for anyone
+Author: Gabe Neri
+Author URI: http://www.gabeneri.com
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
+Version: 0.1
+Text Domain: amazing-shop-lite
+Tags: custom-colors, blog, two-columns, custom-header
+*/
+
+/* Source SCSS is at http://codepen.io/melissacabral/pen/xOaYgq */
+$text-color:    black;
+$link-color:    darkslategray;
+$accent-color:  dodgerblue;
+$secondary-color:rgba(black, .1);
+
+$tablet-width:  700px;
+$desktop-width: 1000px;
+
+$max-width:     75em;
+
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+
+@mixin clearfix() {
+	&:after {
+		display: block;
+		content: '';
+		clear: both;
+	}
+}
+
+@mixin admin-sticky-fix( $offset: 0 ) {
+	$narrow-offset: 46px;
+	$wide-offset: 32px;
+	@if $offset != 0 and type-of($offset) == 'number' {
+		$narrow-offset: $narrow-offset + $offset;
+		$wide-offset: $wide-offset + $offset;
+	}
+	.admin-bar & {
+		top: $narrow-offset;
+		@media screen and (min-width: 783px) {
+			top: $wide-offset;
+		}
+	}
+}
+@mixin stretchy-grid($item, $caption, $width:200px){
+	&{
+		padding: .5vw;
+		font-size: 0;
+		display: -ms-flexbox;
+		-ms-flex-wrap: wrap;
+		-ms-flex-direction: column;
+		-webkit-flex-flow: row wrap;
+		flex-flow: row wrap;
+		display: -webkit-box;
+		display: flex;
+
+		#{$item}{
+			position: relative;
+			-webkit-box-flex: auto;
+			-ms-flex: auto;
+			flex: auto;
+			width: $width;
+			margin: .5vw;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		#{$caption}{
+			font-size:16px;
+			font-size: 1rem;
+			padding:.5em;
+			background: rgba(black, .1);
+			z-index: 1000;
+			width:100%;
+			display:block;
+			h1, h2, h3, p{
+				margin:0 0 .5em 0;
+			}
+		}
+	}
+}
+@mixin hovering-box($padding:2%){
+	padding: $padding;
+	background: white;
+	@include tablet {
+		box-shadow: 4px 4px 15px rgba(black, .2);
+	}
+}
+body {
+	margin: 0;
+	font-family: sans-serif;
+	font-family: Lato, arial, sans-serif;
+	color: $text-color;
+	background: #eee;
+}
+
+.wrapper {
+	max-width: $max-width;
+	margin: 0 auto;
+	@include tablet{
+		padding:2%;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+img{
+	max-width:100%;
+	height: auto;
+}
+
+#header {
+	text-align: center;
+	color: white;
+	background-image: url('http://lorempixel.com/output/abstract-q-c-1200-400-9.jpg');
+	background-size: cover;
+	@include tablet {
+		min-height: 40vh;
+		text-align: left;
+		border-bottom: solid 3px $accent-color;
+	}
+	h2 {
+		display: none;
+		@include tablet {
+			display: block;
+		}
+	}
+	a {
+		color: white;
+	}
+	.custom-logo-link {
+		display: block;
+		background-color:$accent-color;
+		overflow:hidden;
+		@include tablet {
+
+			width:180px;
+			height:50px;
+
+		}
+		img{
+			max-width:100%;
+			height:auto;
+		}
+	}
+	h1 {
+		background: #000;
+		margin: 0;
+		line-height: 50px;
+		font-size: 16px;
+		@include clearfix();
+	}
+	.search-form{
+		input{
+			color:$text-color;
+		}
+		@include tablet{
+			z-index:50;
+			position:absolute;
+			top:60px;
+			right:1em;
+		}
+	}
+
+	/* == menu */
+	.header-bar {
+		background: rgba(0, 0, 0, .6);
+		@include clearfix;
+		@include tablet {
+			background: black;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 100;
+			@include admin-sticky-fix;
+		}
+		nav{
+			@include tablet {
+				position: absolute;
+				top: 0;
+				right: 0;
+				background: #000;
+				margin-left:180px; /* space for logo */
+			}
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+		li {
+			width: 100%;
+			// float: left;
+			border-bottom: solid 1px gray;
+			border-right: solid 1px gray;
+			position: relative;
+			&.current{
+
+			}
+			&:hover > a{
+				background: $accent-color;
+			}
+
+			@include tablet {
+				display: inline-block;
+				float: none;
+				width: auto;
+				border: none;
+			}
+			a {
+				padding: 2.5%;
+				display: block;
+				&:hover,
+				&:focus {
+					background: $accent-color;
+				}
+				@include tablet {
+					padding: 0 1em;
+					line-height: 50px;
+				}
+			}
+			//TODO: submenus
+			ul{
+				display: none;
+				background: rgba($accent-color, .6);
+				@include tablet{
+					position:absolute;
+					top:100%;
+					left:0;
+					z-index: 100;
+				}
+				min-width:320px;
+
+				li{
+					display: block;
+					float:none;
+				}
+			}
+			&:hover ul{
+				display: block;
+			}
+		}
+	}
+}
+
+#content {
+	@include clearfix;
+	@include hovering-box;
+	@include tablet {
+		width: 68%;
+		float: left;
+		position: relative;
+		top: -6em;
+
+	}
+	.hentry {
+		margin: 2em 0;
+		line-height: 1.5;
+		font-size: 1.1em;
+		.postmeta {
+			background: $secondary-color;
+			padding: 2%;
+			font-size: .8em;
+			clear: both;
+			span {
+				padding-right: 1.4em;
+				opacity: .7;
+			}
+		}
+	}
+	.hentry .wp-post-image.size-thumbnail{
+		float:right;
+		margin-left:1em;
+	}
+	/* full width main content*/
+	.page-template-template-no-sidebar &,
+	.page-template-template-sitemap &,
+	.home.page &{
+		width:98%;
+		float:none;
+		left:0;
+	}
+}
+
+
+#sidebar {
+	@include tablet {
+		width: 30%;
+		float: right;
+	}
+	ul li{
+		padding-left:1rem;
+	}
+	.home &{
+		width:100%;
+		float: none;
+	}
+}
+
+#footer {
+
+	clear: both;
+	padding: 2%;
+	border-top:solid 1px rgba(black, .15)
+}
+
+
+/* ==typography */
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Playfair Display', Georgia, serif;
+	font-weight: 900;
+}
+
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: $link-color;
+}
+
+/* ==pagination */
+.pagination{
+	text-align: center;
+	clear:both;
+	a, span{
+		background: $secondary-color;
+		padding:.5em 3%;
+		display: inline-block;
+		margin:.1em;
+	}
+	.current{
+		background: $accent-color;
+		color:white;
+	}
+	.dots{
+		background: transparent;
+	}
+}
+
+/* ==galleries */
+.gallery{
+	@include stretchy-grid('.gallery-item', '.gallery-caption');
+}
+
+/*  ==widgets */
+
+.widget {
+	padding: 1em;
+
+	&.widget_calendar table{
+		table-layout: fixed;
+		width:100%;
+
+		td, th{
+			background: white;
+			padding:4% 3%;
+			text-align: center;
+			vertical-align: center;
+		}
+		th{
+			background-color:$accent-color;
+		}
+
+		#today{
+			background: rgba($accent-color, .2);
+		}
+	}
+	#footer &{
+		font-size:.8em;
+		width:50%;
+		float:left;
+
+		&:nth-child(2n+1){
+			clear:both;
+		}
+		@include tablet{
+			width:33%;
+			float:left;
+			&:nth-child(2n+1){
+				clear:none;
+			}
+			&:nth-child(3n+1){
+				clear:both;
+			}
+		}
+		@include desktop{
+			width:25%;
+			&:nth-child(3n+1){
+				clear:none;
+			}
+			&:nth-child(4n+1){
+				clear:both;
+			}
+		}
+	}
+	.home #sidebar &{
+		width:48%;
+		margin-right:2%;
+		margin-bottom:10%;
+		float:left;
+		@include hovering-box();
+		&:nth-child(2n+1){
+			clear:both;
+		}
+		@include tablet{
+			width:31.333%;
+			float:left;
+			&:nth-child(2n+1){
+				clear:none;
+			}
+			&:nth-child(3n+1){
+				clear:both;
+			}
+		}
+
+	}
+}
+
+/* == products */
+.home{
+	.featured-products ul{
+		@include stretchy-grid(li, '.caption');
+	}
+}
+.post-type-archive-product .product-grid{
+	@include stretchy-grid(article, '.caption', 150px);
+
+}
+.price{
+	color: $accent-color;
+	}
+
+	/* ==wordpress core */
+
+	.alignnone {
+		margin: 5px 20px 20px 0;
+	}
+
+	.aligncenter,
+	div.aligncenter {
+		display: block;
+		margin: 5px auto 5px auto;
+	}
+
+	.alignright {
+		float: right;
+		margin: 5px 0 20px 20px;
+	}
+
+	.alignleft {
+		float: left;
+		margin: 5px 20px 20px 0;
+	}
+
+	a img.alignright {
+		float: right;
+		margin: 5px 0 20px 20px;
+	}
+
+	a img.alignnone {
+		margin: 5px 20px 20px 0;
+	}
+
+	a img.alignleft {
+		float: left;
+		margin: 5px 20px 20px 0;
+	}
+
+	a img.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto
+	}
+
+	.wp-caption {
+		background: #fff;
+		border: 1px solid #f0f0f0;
+		max-width: 96%;
+		/* Image does not overflow the content area */
+		padding: 5px 3px 10px;
+		text-align: center;
+	}
+
+	.wp-caption.alignnone {
+		margin: 5px 20px 20px 0;
+	}
+
+	.wp-caption.alignleft {
+		margin: 5px 20px 20px 0;
+	}
+
+	.wp-caption.alignright {
+		margin: 5px 0 20px 20px;
+	}
+
+	.wp-caption img {
+		border: 0 none;
+		height: auto;
+		margin: 0;
+		max-width: 98.5%;
+		padding: 0;
+		width: auto;
+	}
+
+	.wp-caption p.wp-caption-text {
+		font-size: 11px;
+		line-height: 17px;
+		margin: 0;
+		padding: 0 4px 5px;
+	}
+
+
+	/* Text meant only for screen readers. */
+
+	.screen-reader-text,
+	header h2 {
+		clip: rect(1px, 1px, 1px, 1px);
+		position: absolute !important;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+	}
+
+	.screen-reader-text:focus {
+		background-color: #f1f1f1;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+		clip: auto !important;
+		color: #21759b;
+		display: block;
+		font-size: 14px;
+		font-size: 0.875rem;
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000;
+		/* Above WP toolbar. */
+	}
+
+	.commentlist li{
+		padding-left:1em;
+	}
+
+	.sticky, .gallery-caption,  .bypostauthor{
+		text-decoration: none;
+	}
+
+	.one-third{
+		width: 33.33%;
+		float: left;
+	}
+
+	.format-quote{
+		background: yellow;
+	}

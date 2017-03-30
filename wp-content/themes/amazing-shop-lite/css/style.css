@@ -1,0 +1,497 @@
+/*
+Theme Name: Amazing Shop Lite
+Theme URI: http://webpagewithinstructions.example.com
+Description: A WooCommerce enabled theme available free for anyone
+Author: Gabe Neri
+Author URI: http://www.gabeneri.com
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
+Version: 0.1
+Text Domain: amazing-shop-lite
+Tags: custom-colors, blog, two-columns, custom-header
+*/
+/* Source SCSS is at http://codepen.io/melissacabral/pen/xOaYgq */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-family: Lato, arial, sans-serif;
+  color: black;
+  background: #eee; }
+
+.wrapper {
+  max-width: 75em;
+  margin: 0 auto; }
+  @media (min-width: 700px) {
+    .wrapper {
+      padding: 2%; } }
+
+* {
+  box-sizing: border-box; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+#header {
+  text-align: center;
+  color: white;
+  background-image: url("http://lorempixel.com/output/abstract-q-c-1200-400-9.jpg");
+  background-size: cover;
+  /* == menu */ }
+  @media (min-width: 700px) {
+    #header {
+      min-height: 40vh;
+      text-align: left;
+      border-bottom: solid 3px dodgerblue; } }
+  #header h2 {
+    display: none; }
+    @media (min-width: 700px) {
+      #header h2 {
+        display: block; } }
+  #header a {
+    color: white; }
+  #header .custom-logo-link {
+    display: block;
+    background-color: dodgerblue;
+    overflow: hidden; }
+    @media (min-width: 700px) {
+      #header .custom-logo-link {
+        width: 180px;
+        height: 50px; } }
+    #header .custom-logo-link img {
+      max-width: 100%;
+      height: auto; }
+  #header h1 {
+    background: #000;
+    margin: 0;
+    line-height: 50px;
+    font-size: 16px; }
+    #header h1:after {
+      display: block;
+      content: '';
+      clear: both; }
+  #header .search-form input {
+    color: black; }
+  @media (min-width: 700px) {
+    #header .search-form {
+      z-index: 50;
+      position: absolute;
+      top: 60px;
+      right: 1em; } }
+  #header .header-bar {
+    background: rgba(0, 0, 0, 0.6); }
+    #header .header-bar:after {
+      display: block;
+      content: '';
+      clear: both; }
+    @media (min-width: 700px) {
+      #header .header-bar {
+        background: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100; }
+        .admin-bar #header .header-bar {
+          top: 46px; } }
+    @media screen and (min-width: 700px) and (min-width: 783px) {
+      .admin-bar #header .header-bar {
+        top: 32px; } }
+
+    @media (min-width: 700px) {
+      #header .header-bar nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #000;
+        margin-left: 180px;
+        /* space for logo */ } }
+    #header .header-bar ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+    #header .header-bar li {
+      width: 100%;
+      border-bottom: solid 1px gray;
+      border-right: solid 1px gray;
+      position: relative; }
+      #header .header-bar li:hover > a {
+        background: dodgerblue; }
+      @media (min-width: 700px) {
+        #header .header-bar li {
+          display: inline-block;
+          float: none;
+          width: auto;
+          border: none; } }
+      #header .header-bar li a {
+        padding: 2.5%;
+        display: block; }
+        #header .header-bar li a:hover, #header .header-bar li a:focus {
+          background: dodgerblue; }
+        @media (min-width: 700px) {
+          #header .header-bar li a {
+            padding: 0 1em;
+            line-height: 50px; } }
+      #header .header-bar li ul {
+        display: none;
+        background: rgba(30, 144, 255, 0.6);
+        min-width: 320px; }
+        @media (min-width: 700px) {
+          #header .header-bar li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 100; } }
+        #header .header-bar li ul li {
+          display: block;
+          float: none; }
+      #header .header-bar li:hover ul {
+        display: block; }
+
+#content {
+  padding: 2%;
+  background: white;
+  /* full width main content*/ }
+  #content:after {
+    display: block;
+    content: '';
+    clear: both; }
+  @media (min-width: 700px) {
+    #content {
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); } }
+  @media (min-width: 700px) {
+    #content {
+      width: 68%;
+      float: left;
+      position: relative;
+      top: -6em; } }
+  #content .hentry {
+    margin: 2em 0;
+    line-height: 1.5;
+    font-size: 1.1em; }
+    #content .hentry .postmeta {
+      background: rgba(0, 0, 0, 0.1);
+      padding: 2%;
+      font-size: .8em;
+      clear: both; }
+      #content .hentry .postmeta span {
+        padding-right: 1.4em;
+        opacity: .7; }
+  #content .hentry .wp-post-image.size-thumbnail {
+    float: right;
+    margin-left: 1em; }
+  .page-template-template-no-sidebar #content, .page-template-template-sitemap #content, .home.page #content {
+    width: 98%;
+    float: none;
+    left: 0; }
+
+@media (min-width: 700px) {
+  #sidebar {
+    width: 30%;
+    float: right; } }
+#sidebar ul li {
+  padding-left: 1rem; }
+.home #sidebar {
+  width: 100%;
+  float: none; }
+
+#footer {
+  clear: both;
+  padding: 2%;
+  border-top: solid 1px rgba(0, 0, 0, 0.15); }
+
+/* ==typography */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900; }
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+a {
+  text-decoration: none;
+  color: darkslategray; }
+
+/* ==pagination */
+.pagination {
+  text-align: center;
+  clear: both; }
+  .pagination a, .pagination span {
+    background: rgba(0, 0, 0, 0.1);
+    padding: .5em 3%;
+    display: inline-block;
+    margin: .1em; }
+  .pagination .current {
+    background: dodgerblue;
+    color: white; }
+  .pagination .dots {
+    background: transparent; }
+
+/* ==galleries */
+.gallery {
+  padding: .5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  display: -webkit-box;
+  display: flex; }
+  .gallery .gallery-item {
+    position: relative;
+    -webkit-box-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+    width: 200px;
+    margin: .5vw; }
+    .gallery .gallery-item img {
+      width: 100%;
+      height: auto; }
+  .gallery .gallery-caption {
+    font-size: 16px;
+    font-size: 1rem;
+    padding: .5em;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+    display: block; }
+    .gallery .gallery-caption h1, .gallery .gallery-caption h2, .gallery .gallery-caption h3, .gallery .gallery-caption p {
+      margin: 0 0 .5em 0; }
+
+/*  ==widgets */
+.widget {
+  padding: 1em; }
+  .widget.widget_calendar table {
+    table-layout: fixed;
+    width: 100%; }
+    .widget.widget_calendar table td, .widget.widget_calendar table th {
+      background: white;
+      padding: 4% 3%;
+      text-align: center;
+      vertical-align: center; }
+    .widget.widget_calendar table th {
+      background-color: dodgerblue; }
+    .widget.widget_calendar table #today {
+      background: rgba(30, 144, 255, 0.2); }
+  #footer .widget {
+    font-size: .8em;
+    width: 50%;
+    float: left; }
+    #footer .widget:nth-child(2n+1) {
+      clear: both; }
+    @media (min-width: 700px) {
+      #footer .widget {
+        width: 33%;
+        float: left; }
+        #footer .widget:nth-child(2n+1) {
+          clear: none; }
+        #footer .widget:nth-child(3n+1) {
+          clear: both; } }
+    @media (min-width: 1000px) {
+      #footer .widget {
+        width: 25%; }
+        #footer .widget:nth-child(3n+1) {
+          clear: none; }
+        #footer .widget:nth-child(4n+1) {
+          clear: both; } }
+  .home #sidebar .widget {
+    width: 48%;
+    margin-right: 2%;
+    margin-bottom: 10%;
+    float: left;
+    padding: 2%;
+    background: white; }
+    @media (min-width: 700px) {
+      .home #sidebar .widget {
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); } }
+    .home #sidebar .widget:nth-child(2n+1) {
+      clear: both; }
+    @media (min-width: 700px) {
+      .home #sidebar .widget {
+        width: 31.333%;
+        float: left; }
+        .home #sidebar .widget:nth-child(2n+1) {
+          clear: none; }
+        .home #sidebar .widget:nth-child(3n+1) {
+          clear: both; } }
+
+/* == products */
+.home .featured-products ul {
+  padding: .5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  display: -webkit-box;
+  display: flex; }
+  .home .featured-products ul li {
+    position: relative;
+    -webkit-box-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+    width: 200px;
+    margin: .5vw; }
+    .home .featured-products ul li img {
+      width: 100%;
+      height: auto; }
+  .home .featured-products ul .caption {
+    font-size: 16px;
+    font-size: 1rem;
+    padding: .5em;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+    display: block; }
+    .home .featured-products ul .caption h1, .home .featured-products ul .caption h2, .home .featured-products ul .caption h3, .home .featured-products ul .caption p {
+      margin: 0 0 .5em 0; }
+
+.post-type-archive-product .product-grid {
+  padding: .5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  display: -webkit-box;
+  display: flex; }
+  .post-type-archive-product .product-grid article {
+    position: relative;
+    -webkit-box-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+    width: 150px;
+    margin: .5vw; }
+    .post-type-archive-product .product-grid article img {
+      width: 100%;
+      height: auto; }
+  .post-type-archive-product .product-grid .caption {
+    font-size: 16px;
+    font-size: 1rem;
+    padding: .5em;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+    display: block; }
+    .post-type-archive-product .product-grid .caption h1, .post-type-archive-product .product-grid .caption h2, .post-type-archive-product .product-grid .caption h3, .post-type-archive-product .product-grid .caption p {
+      margin: 0 0 .5em 0; }
+
+.price {
+  color: dodgerblue; }
+
+/* ==wordpress core */
+.alignnone {
+  margin: 5px 20px 20px 0; }
+
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto; }
+
+.alignright {
+  float: right;
+  margin: 5px 0 20px 20px; }
+
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0; }
+
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px; }
+
+a img.alignnone {
+  margin: 5px 20px 20px 0; }
+
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0; }
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.wp-caption {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center; }
+
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0; }
+
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0; }
+
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px; }
+
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto; }
+
+.wp-caption p.wp-caption-text {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px; }
+
+/* Text meant only for screen readers. */
+.screen-reader-text,
+header h2 {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden; }
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */ }
+
+.commentlist li {
+  padding-left: 1em; }
+
+.sticky, .gallery-caption, .bypostauthor {
+  text-decoration: none; }
+
+.one-third {
+  width: 33.33%;
+  float: left; }
+
+.format-quote {
+  background: yellow; }
+
+/*# sourceMappingURL=style.css.map */
