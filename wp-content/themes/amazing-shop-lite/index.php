@@ -49,7 +49,7 @@ get_header(); ?>
 				<?php
 			} //end while
 
-			platty_pagination();
+			amazing_shop_lite_pagination();
 
 			comments_template( '/comments.php', true ); //include comments.php or WP default
 

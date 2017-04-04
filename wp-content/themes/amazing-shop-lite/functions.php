@@ -1,11 +1,4 @@
 <?php
-/**
- * Amazing Shop Lite functions and definitions
- * @package WordPress
- * @subpackage Amazing_Shop_Lite
- * @since 1.0
- */
- 
 //turn on sleeping features
 //featured image support:
 add_theme_support('post-thumbnails');
@@ -47,7 +40,7 @@ add_editor_style();
 * Make the excerpts better - customize the number of words and change [...]
 * @see https://developer.wordpress.org/reference/functions/the_excerpt/
 */
-function platty_ex_length(){
+function amazing_shop_lite_ex_length(){
 	//short excerpt on search results
 	if( is_search() ){
 		return 20; //words
@@ -55,29 +48,29 @@ function platty_ex_length(){
 		return 75; //words
 	}
 }
-add_filter( 'excerpt_length', 'platty_ex_length'  );
+add_filter( 'excerpt_length', 'amazing_shop_lite_ex_length'  );
 
 
-function platty_readmore(){
+function amazing_shop_lite_readmore(){
 	return '<br><a href="' . get_permalink() . '" class="read-more" title="Keep Reading this post">Read More</a>';
 }
-add_filter( 'excerpt_more', 'platty_readmore' );
+add_filter( 'excerpt_more', 'amazing_shop_lite_readmore' );
 
 /**
 * Create two menu locations. Display them with wp_nav_menu() in your templates
 */
-function platty_menus(){
+function amazing_shop_lite_menus(){
 	register_nav_menus( array(
 		'main_menu' 	=> 'Main Navigation',
 		'social_menu' 	=> 'Social Media',
 	) );
 }
-add_action( 'init', 'platty_menus' );
+add_action( 'init', 'amazing_shop_lite_menus' );
 
 /**
 * Helper function to handle pagination. Call in any template file.
 */
-function platty_pagination(){
+function amazing_shop_lite_pagination(){
 	if( ! is_singular() ){
 		//archive pagination
 		if( function_exists('the_posts_pagination') ){
@@ -101,7 +94,7 @@ function platty_pagination(){
 * Register Widget Areas (Dynamic Sidebars)
 * Call dynamic_sidebar() in your templates to display them
 */
-function platty_widget_areas(){
+function amazing_shop_lite_widget_areas(){
 	register_sidebar( array(
 		'name' 			    => 'Blog Sidebar',
 		'id'			      => 'blog-sidebar',
@@ -130,15 +123,15 @@ function platty_widget_areas(){
 		'after_title' 	=> '</h3>',
 	) );
 }
-add_action( 'widgets_init', 'platty_widget_areas' );
+add_action( 'widgets_init', 'amazing_shop_lite_widget_areas' );
 
 /**
 * Improve UX of replying to comments
 */
-function platty_comments_reply(){
+function amazing_shop_lite_comments_reply(){
 	wp_enqueue_script( 'comment-reply' );
 }
-add_action( 'wp_enqueue_scripts', 'platty_comments_reply' );
+add_action( 'wp_enqueue_scripts', 'amazing_shop_lite_comments_reply' );
 
 /**
 * Fix the comments number issue (remove trackbacks and pingbacks from comment count)
@@ -155,11 +148,11 @@ function comment_count( $count ) {
 }
 
 /**
-* A helper function to output the product's price. Call platty_price() anywhere in the loop to use.
+* A helper function to output the product's price. Call amazing_shop_lite_price() anywhere in the loop to use.
 * Note: 'price' is a custom field.
 * @return mixed. Displays HTML for the price tag.
 */
-function platty_price(){
+function amazing_shop_lite_price(){
 	global $post;
 	$price = get_post_meta( $post->ID, 'price', true );
 	if ($price){
@@ -171,11 +164,11 @@ function platty_price(){
 	}
 
 	/**
-	* A helper function to output the product's size. Call platty_size() anywhere in the loop to use.
+	* A helper function to output the product's size. Call amazing_shop_lite_size() anywhere in the loop to use.
 	* Note: 'size' is a custom field.
 	* @return mixed. Displays HTML for the size tag.
 	*/
-	function platty_size(){
+	function amazing_shop_lite_size(){
 		global $post;
 		$size = get_post_meta( $post->ID, 'size', true );
 		if ($size){
