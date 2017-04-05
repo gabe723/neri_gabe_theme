@@ -32,15 +32,15 @@ get_header(); ?>
 					<div class="entry-content">
 					</div>
 					<div class="postmeta">
-						<span class="author">by: USERNAME </span>
-						<span class="date"> DATE </span>
-						<span class="num-comments"> X COMMENTS </span>
+						<span class="author">by: <?php the_author(); ?> </span>
+						<span class="date"> <?php the_date(); ?> </span>
+						<span class="num-comments"> (<?php comments_number(); ?>) Comments </span>
 						<span class="categories">
 							<a href="#" title="View all posts in Updates" >
 								<?php the_category(); ?>
 							</a>
 						</span>
-						<span class="tags">TAG, TAG, TAG</span>
+						<span class="tags"><?php the_tags(); ?></span>
 					</div>
 					<!-- end .postmeta -->
 				</article>

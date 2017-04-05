@@ -46,9 +46,9 @@
 				<h2><?php bloginfo( 'description' ); ?></h2>
 
 				<?php wp_nav_menu( array(
-					'theme_location' 	=> 'main_menu',
-					'container' 		=> 'nav', 		//div, nav or false
-					'menu_class' 		=> 'menu', 		//ul class="menu"
+					'theme_location' => 'main_menu',
+					'container' 		 => 'nav', //div, nav or false
+					'menu_class' 		 => 'menu', //ul class="menu"
 				) ); ?>
 
 				<?php get_search_form(); ?>
