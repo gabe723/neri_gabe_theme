@@ -23,14 +23,40 @@ get_header(); ?>
 			while( have_posts() ){
 				the_post();
 				?>
-				<article class="post">
+				<article <?php post_class(); ?>>
 					<h2 class="entry-title">
-						<a href="SINGLE_POST_URL">
+						<a href="<?php the_permalink(); ?>">
 							<?php the_title(); ?>
 						</a>
 					</h2>
+
+					<?php
+					//use "$wp_query" when in the main loop
+					if ( $wp_query->current_post == 0 ) {
+						the_post_thumbnail( 'large' );
+					}else {
+						the_post_thumbnail( 'thumbnail' );
+					}
+					?>
+
 					<div class="entry-content">
+						<?php
+						if( is_singular() ){
+							//single post, page, attachment, etc
+							the_content();
+							wp_link_pages( array(
+								'before' => '<div class="pagination">Pages:',
+								'after'	=> '</div>',
+								'pagelink' => '<span>%</span>',
+								'next_or_number' => 'next',
+							) );
+						}else{
+							//not singular : archives, blog, search results
+							the_excerpt();
+						}
+						?>
 					</div>
+
 					<div class="postmeta">
 						<span class="author">by: <?php the_author(); ?> </span>
 						<span class="date"> <?php the_date(); ?> </span>

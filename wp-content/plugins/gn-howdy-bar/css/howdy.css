@@ -1,0 +1,28 @@
+/* Make sure your selectors are specific to just the howdy bar */
+.howdy-bar{
+  background: rgb(233, 124, 54);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  text-align: center;
+  border-bottom:solid 3px rgb(252, 172, 50);
+  padding:.2em;
+  color: white;
+}
+/*push it down only when the admin bar is showing*/
+.admin-bar .howdy-bar{
+  top:32px;
+}
+/* band-aid for plattypus theme */
+.header-bar{
+  margin-top:34px;
+}
+
+.howdy-button{
+  background: rgb(252, 221, 11);
+  border-radius: 4px;
+  padding:.2em .8em;
+  margin: 0 .5em;
+  display: inline-block;
+}
