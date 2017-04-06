@@ -3,10 +3,10 @@
 //featured image support:
 add_theme_support('post-thumbnails');
 
-add_theme_support( 'post-formats', array( 'quote', 'link', 'audio', 'video', 'image',
-'gallery', 'aside', 'status' ) );
+add_theme_support( 'post-formats', array('quote', 'link', 'audio', 'video', 'image',
+'gallery', 'aside', 'status') );
 
-add_theme_support( 'custom-background' );
+add_theme_support('custom-background');
 
 //don't forget to show the header image in the header.php file
 add_theme_support( 'custom-header', array(
@@ -21,17 +21,17 @@ add_theme_support( 'custom-logo', array(
 ) );
 
 //better RSS feed links. a must-have if you use the blog
-add_theme_support( 'automatic-feed-links' );
+add_theme_support('automatic-feed-links');
 
 //improve the markup of WordPress generated code
 add_theme_support( 'html5', array('search-form', 'comment-list', 'comment-form',
-'gallery', 'caption', ) );
+'gallery', 'caption',) );
 
 //improve title tag for SEO. Remove <title> from header.php
-add_theme_support( 'title-tag' );
+add_theme_support('title-tag');
 
 //auto embed max width
-if ( ! isset( $content_width ) ) $content_width = 735; //measurement is in px
+if ( ! isset($content_width) ) $content_width = 735; //measurement is in px
 
 //editor-style.css
 add_editor_style();
@@ -48,13 +48,13 @@ function amazing_shop_lite_ex_length(){
 		return 75; //words
 	}
 }
-add_filter( 'excerpt_length', 'amazing_shop_lite_ex_length'  );
+add_filter('excerpt_length', 'amazing_shop_lite_ex_length');
 
 
 function amazing_shop_lite_readmore(){
 	return '<br><a href="' . get_permalink() . '" class="read-more" title="Keep Reading this post">Read More</a>';
 }
-add_filter( 'excerpt_more', 'amazing_shop_lite_readmore' );
+add_filter('excerpt_more', 'amazing_shop_lite_readmore');
 
 /**
 * Create two menu locations. Display them with wp_nav_menu() in your templates
@@ -65,7 +65,7 @@ function amazing_shop_lite_menus(){
 		'social_menu' 	=> 'Social Media',
 	) );
 }
-add_action( 'init', 'amazing_shop_lite_menus' );
+add_action('init', 'amazing_shop_lite_menus');
 
 /**
 * Helper function to handle pagination. Call in any template file.
@@ -77,15 +77,15 @@ function amazing_shop_lite_pagination(){
 			the_posts_pagination();
 		}else{
 			echo '<div class="pagination">';
-			next_posts_link( '&larr; Older Posts' );
-			previous_posts_link( 'Newer Posts &rarr;' );
+			next_posts_link('&larr; Older Posts');
+			previous_posts_link('Newer Posts &rarr;');
 			echo '</div>';
 		}
 	}else{
 		//single pagination
 		echo '<div class="pagination">';
-		previous_post_link( '%link', '&larr; %title' );  //one older post
-		next_post_link( '%link', '%title &rarr;' );		//one newer post
+		previous_post_link('%link', '&larr; %title');  //one older post
+		next_post_link('%link', '%title &rarr;');		//one newer post
 		echo '</div>';
 	}
 }
@@ -123,25 +123,25 @@ function amazing_shop_lite_widget_areas(){
 		'after_title' 	=> '</h3>',
 	) );
 }
-add_action( 'widgets_init', 'amazing_shop_lite_widget_areas' );
+add_action('widgets_init', 'amazing_shop_lite_widget_areas');
 
 /**
 * Improve UX of replying to comments
 */
 function amazing_shop_lite_comments_reply(){
-	wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script('comment-reply');
 }
-add_action( 'wp_enqueue_scripts', 'amazing_shop_lite_comments_reply' );
+add_action('wp_enqueue_scripts', 'amazing_shop_lite_comments_reply');
 
 /**
 * Fix the comments number issue (remove trackbacks and pingbacks from comment count)
 */
 add_filter('get_comments_number', 'comment_count', 0);
-function comment_count( $count ) {
+function comment_count($count) {
 	if ( ! is_admin() ) {
 		global $id;
-		$comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
-		return count($comments_by_type['comment']);
+		$comments_by_type = &separate_comments( get_comments('status=approve&post_id=' . $id) );
+		return count( $comments_by_type['comment'] );
 	} else {
 		return $count;
 	}
@@ -154,7 +154,7 @@ function comment_count( $count ) {
 */
 function amazing_shop_lite_price(){
 	global $post;
-	$price = get_post_meta( $post->ID, 'price', true );
+	$price = get_post_meta($post->ID, 'price', true);
 	if ($price){
 		?>
 		<span class="price">
@@ -170,7 +170,7 @@ function amazing_shop_lite_price(){
 	*/
 	function amazing_shop_lite_size(){
 		global $post;
-		$size = get_post_meta( $post->ID, 'size', true );
+		$size = get_post_meta($post->ID, 'size', true);
 		if ($size){
 			?>
 			<span class="size">
@@ -182,8 +182,8 @@ function amazing_shop_lite_price(){
 		/**
 		* Customization API additions - custom colors, fonts, layouts, etc.
 		*/
-		add_action( 'customize_register', 'platty_customizer' );
-		function platty_customizer( $wp_customize ){
+		add_action('customize_register', 'platty_customizer');
+		function platty_customizer($wp_customize){
 			//register all sections, settings and controls here:
 
 			//"accent color"
@@ -191,12 +191,12 @@ function amazing_shop_lite_price(){
 				'default' => 'dodgerblue',
 			) );
 			//user interface for accent color
-			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize,
+			$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize,
 			'accent_color_control', array(
 				'label'    => 'Accent Color',
 				'section'  => 'colors', //this one is built in
 				'settings' => 'accent_color', //added above
-			) ) );
+			) ));
 
 			//Layout options
 			//create new section labeled "Layout"
@@ -209,7 +209,7 @@ function amazing_shop_lite_price(){
 			$wp_customize->add_setting( 'header_size', array(
 				'default' => 'large',
 			) );
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'header_size_control', array(
+			$wp_customize->add_control( new WP_Customize_Control($wp_customize, 'header_size_control', array(
 				'label'    => 'Header Height',
 				'section'  => 'platty_layout',
 				'settings' => 'header_size',
@@ -219,23 +219,23 @@ function amazing_shop_lite_price(){
 					'medium'      => 'Medium',
 					'large'       => 'Large',
 				),
-			) ) );
+			) ));
 
 			//Second Custom Logo
-			$wp_customize->add_setting( 'secondary_logo' );
+			$wp_customize->add_setting('secondary_logo');
 
-			$wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize,
+			$wp_customize->add_control( new WP_Customize_Cropped_Image_Control($wp_customize,
 			'secondary_logo_control', array(
 				'label'    => 'Secondary Logo',
 				'section'  => 'title_tagline', //built in "site identity" section
 				'settings' => 'secondary_logo',
-			) ) );
+			) ));
 		} //end platty_customizer
 
 		/**
 		* Customized CSS - displays the customizer changes
 		*/
-		add_action( 'wp_head', 'platty_custom_css' );
+		add_action('wp_head', 'platty_custom_css');
 		function platty_custom_css(){
 			switch ( get_theme_mod('header_size') ){
 				case 'small':
@@ -253,10 +253,10 @@ function amazing_shop_lite_price(){
 			?>
 			<style type='text/css'>
 			#header .custom-logo-link{
-				background-color: <?php echo get_theme_mod( 'accent_color' ); ?>;
+				background-color: <?php echo get_theme_mod('accent_color'); ?>;
 			}
 			#header{
-				border-color: <?php echo get_theme_mod( 'accent_color' ); ?>;
+				border-color: <?php echo get_theme_mod('accent_color'); ?>;
 			}
 			@media screen and (min-width:700px){
 				#header{
@@ -271,8 +271,8 @@ function amazing_shop_lite_price(){
 		* Helper function to show custom secondary logo
 		*/
 		function amazing_shop_lite_logo(){
-			$logo = get_theme_mod( 'secondary_logo' );
-			if( $logo ){
+			$logo = get_theme_mod('secondary_logo');
+			if($logo){
 				echo wp_get_attachment_image( $logo, 'thumbnail', array(
 					'class' => 'secondary-logo',
 				) );
@@ -280,38 +280,37 @@ function amazing_shop_lite_price(){
 		}
 
 		//remove hooks for WooCommerce wrappers
-		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+		remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+		remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
 		//add hooks for custom wrappers
 		add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
-		add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
-
 		function my_theme_wrapper_start() {
 			echo '<section id="main">';
 		}
 
+		add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
 		function my_theme_wrapper_end() {
 			echo '</section>';
 		}
 
 		//declare WooCommerce support
-		add_action( 'after_setup_theme', 'woocommerce_support' );
+		add_action('after_setup_theme', 'woocommerce_support');
 		function woocommerce_support() {
-			add_theme_support( 'woocommerce' );
+			add_theme_support('woocommerce');
 		}
 
 		//remove each WooCommerce style one by one
-		// add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
-		// function jk_dequeue_styles( $enqueue_styles ) {
-		// 	unset( $enqueue_styles['woocommerce-general'] );	//remove the gloss
-		// 	unset( $enqueue_styles['woocommerce-layout'] );		//remove the layout
-		// 	unset( $enqueue_styles['woocommerce-smallscreen'] );	//remove the smallscreen optimization
+		// add_filter('woocommerce_enqueue_styles', 'jk_dequeue_styles');
+		// function jk_dequeue_styles($enqueue_styles) {
+		// 	unset($enqueue_styles['woocommerce-general']);	//remove the gloss
+		// 	unset($enqueue_styles['woocommerce-layout']);		//remove the layout
+		// 	unset($enqueue_styles['woocommerce-smallscreen']);	//remove the smallscreen optimization
 		// 	return $enqueue_styles;
 		// }
 
 		//or just remove them all in one line
-		// add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+		// add_filter('woocommerce_enqueue_styles', '__return_false');
 
 
 
