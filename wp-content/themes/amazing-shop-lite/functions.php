@@ -301,6 +301,18 @@ function amazing_shop_lite_price(){
 			add_theme_support( 'woocommerce' );
 		}
 
+		//remove each WooCommerce style one by one
+		// add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
+		// function jk_dequeue_styles( $enqueue_styles ) {
+		// 	unset( $enqueue_styles['woocommerce-general'] );	//remove the gloss
+		// 	unset( $enqueue_styles['woocommerce-layout'] );		//remove the layout
+		// 	unset( $enqueue_styles['woocommerce-smallscreen'] );	//remove the smallscreen optimization
+		// 	return $enqueue_styles;
+		// }
+
+		//or just remove them all in one line
+		// add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
 
 
 
