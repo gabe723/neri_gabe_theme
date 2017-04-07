@@ -10,18 +10,72 @@ Version: 0.1
 Text Domain: amazing-shop-lite
 Tags: custom-colors, blog, two-columns, custom-header
 */
+$text-color:    black;
+$link-color:    darkslategray;
+$accent-color:  dodgerblue;
+$secondary-color:rgba(black, .1);
+
+$tablet-width:  700px;
+$desktop-width: 1000px;
+
+$max-width:     75em;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin clearfix() {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin admin-sticky-fix( $offset: 0 ) {
+  $narrow-offset: 46px;
+  $wide-offset: 32px;
+  @if $offset != 0 and type-of($offset) == 'number' {
+    $narrow-offset: $narrow-offset + $offset;
+    $wide-offset: $wide-offset + $offset;
+  }
+  .admin-bar & {
+    top: $narrow-offset;
+    @media screen and (min-width: 783px) {
+      top: $wide-offset;
+    }
+  }
+}
+
 body {
   max-width: 60em;
   margin: 0 auto;
   font-family: Calibri, Arial, sans-serif;
 }
 
-#header,
-#footer,
-#content,
-#sidebar {
-  padding: 2%;
+.wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+  @include tablet{
+    padding:2%;
+  }
+}
+
+* {
   box-sizing: border-box;
+}
+
+img{
+  max-width:100%;
+  height: auto;
 }
 
 a {
@@ -35,28 +89,196 @@ a:focus {
   text-decoration: underline;
 }
 
-header nav {
-  background: #eee;
-  margin: 1em 0;
+#header {
+  text-align: center;
+  color: white;
+  background-image: url('http://lorempixel.com/output/abstract-q-c-1200-400-9.jpg');
+  background-size: cover;
+  @include tablet {
+    min-height: 40vh;
+    text-align: left;
+    border-bottom: solid 3px $accent-color;
+  }
+  h2 {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+  a {
+    color: white;
+  }
+  .custom-logo-link {
+    display: block;
+    background-color:$accent-color;
+    overflow:hidden;
+    @include tablet {
+
+      width:180px;
+      height:50px;
+
+    }
+    img{
+      max-width:100%;
+      height:auto;
+    }
+  }
+  h1 {
+    background: #000;
+    margin: 0;
+    line-height: 50px;
+    font-size: 16px;
+    @include clearfix();
+  }
+  .search-form{
+    input{
+      color:$text-color;
+    }
+    @include tablet{
+      z-index:50;
+      position:absolute;
+      top:60px;
+      right:1em;
+    }
+  }
+
+  /* Menu */
+  .header-bar {
+    background: rgba(0, 0, 0, .6);
+    @include clearfix;
+    @include tablet {
+      background: black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      @include admin-sticky-fix;
+    }
+    nav{
+      @include tablet {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #000;
+        margin-left:180px; /* space for logo */
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    li {
+      width: 100%;
+      // float: left;
+      border-bottom: solid 1px gray;
+      border-right: solid 1px gray;
+      position: relative;
+      &.current{
+
+      }
+      &:hover > a{
+        background: $accent-color;
+      }
+
+      @include tablet {
+        display: inline-block;
+        float: none;
+        width: auto;
+        border: none;
+      }
+      a {
+        padding: 2.5%;
+        display: block;
+        &:hover,
+        &:focus {
+          background: $accent-color;
+        }
+        @include tablet {
+          padding: 0 1em;
+          line-height: 50px;
+        }
+      }
+      //TODO: submenus
+      ul{
+        display: none;
+        background: rgba($accent-color, .6);
+        @include tablet{
+          position:absolute;
+          top:100%;
+          left:0;
+          z-index: 100;
+        }
+        min-width:320px;
+
+        li{
+          display: block;
+          float:none;
+        }
+      }
+      &:hover ul{
+        display: block;
+      }
+    }
+  }
 }
 
-header nav ul,
-header nav li {
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-header nav ul ul{
-  display:none;
-}
-header nav a {
-  display: block;
-  padding: .5em;
+#content {
+  @include clearfix;
+  @include tablet {
+    width: 68%;
+    float: left;
+    position: relative;
+    top: -6em;
+  }
+  .hentry {
+    margin: 2em 0;
+    line-height: 1.5;
+    font-size: 1.1em;
+    .postmeta {
+      background: $secondary-color;
+      padding: 2%;
+      font-size: .8em;
+      clear: both;
+      span {
+        padding-right: 1.4em;
+        opacity: .7;
+      }
+    }
+  }
+  .hentry .wp-post-image.size-thumbnail{
+    float:right;
+    margin-left:1em;
+  }
+  /* full width main content*/
+  .page-template-template-no-sidebar &,
+  .page-template-template-sitemap &,
+  .home.page &{
+    width:98%;
+    float:none;
+    left:0;
+  }
 }
 
-header nav a:hover {
-  background: #ddd;
-  text-decoration: none;
+#sidebar {
+  @include tablet {
+    width: 30%;
+    float: right;
+  }
+  ul li{
+    padding-left:1rem;
+  }
+  .home &{
+    width:100%;
+    float: none;
+  }
+}
+
+#footer {
+  clear: both;
+  padding: 2%;
+  border-top:solid 1px rgba(black, .15)
 }
 
 article {
@@ -76,30 +298,42 @@ article {
   padding-right: .3em;
 }
 
-@media screen and (min-width:600px) {
-  header nav li {
-    display: inline-block;
-  }
-  header nav ul ul{
-    position:absolute;
-    left:0;
-    top:100%;
-    background: #eee;
-  }
-  header nav ul li:hover ul{
-    display:block;
-  }
-  #content {
-    float: left;
-    width: 70%;
-  }
-  #sidebar {
-    float: right;
-    width: 30%;
-  }
-  #footer {
-    border-top: solid 1px #ddd;
-    clear: both;
-    text-align: center;
-  }
+a.button,
+button.button,
+input.button,
+#review_form #submit {
+  background:black;
 }
+
+// CART PAGE
+.woocommerce-cart{
+  
+}
+
+// @media screen and (min-width:600px) {
+//   header nav li {
+//     display: inline-block;
+//   }
+//   header nav ul ul{
+//     position:absolute;
+//     left:0;
+//     top:100%;
+//     background: #eee;
+//   }
+//   header nav ul li:hover ul{
+//     display:block;
+//   }
+//   #content {
+//     float: left;
+//     width: 70%;
+//   }
+//   #sidebar {
+//     float: right;
+//     width: 30%;
+//   }
+//   #footer {
+//     border-top: solid 1px #ddd;
+//     clear: both;
+//     text-align: center;
+//   }
+// }
