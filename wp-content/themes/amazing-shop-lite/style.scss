@@ -42,7 +42,7 @@ $max-width:     75em;
 
 @mixin admin-sticky-fix( $offset: 0 ) {
   $narrow-offset: 46px;
-  $wide-offset: 32px;
+  $wide-offset: 0px;
   @if $offset != 0 and type-of($offset) == 'number' {
     $narrow-offset: $narrow-offset + $offset;
     $wide-offset: $wide-offset + $offset;
@@ -137,8 +137,8 @@ a:focus {
     @include tablet{
       z-index:50;
       position:absolute;
-      top:60px;
-      right:1em;
+      top:40px;
+      right:30em;
     }
   }
 
@@ -158,8 +158,8 @@ a:focus {
     nav{
       @include tablet {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 69px;
+        right: 460px;
         background: #000;
         margin-left:180px; /* space for logo */
       }
@@ -307,7 +307,7 @@ input.button,
 
 // CART PAGE
 .woocommerce-cart{
-  
+
 }
 
 // @media screen and (min-width:600px) {
