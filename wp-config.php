@@ -27,7 +27,7 @@ define('DB_NAME', 'gabe_theme');
 define('DB_USER', 'gn_theme');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'aK46QKUXdG3f8wCJ');
+define('DB_PASSWORD', 'cfy1rrJx6ISg70YP');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
