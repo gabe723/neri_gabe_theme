@@ -17,6 +17,7 @@
  *
  * @package WordPress
  */
+
 // wp-admin pw: fyUmVI@!qChN4tsjTD7J2wLq
 
 // ** MySQL settings - You can get this info from your web host ** //
