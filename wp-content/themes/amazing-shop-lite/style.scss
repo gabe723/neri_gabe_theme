@@ -56,7 +56,7 @@ $max-width:     75em;
 }
 
 body{
-  max-width: 60em;
+  max-width: 100%;
   margin: 0 auto;
   font-family: Calibri, Arial, sans-serif;
 }
@@ -169,7 +169,7 @@ li{
     nav{
       @include tablet{
         position: absolute;
-        top: 64%;
+        top: 63%;
         right: 35%;
         background: #000;
         margin-left:180px; /* space for logo */
@@ -232,49 +232,6 @@ li{
         display: block;
       }
     }
-    span.screen-reader-text{
-      visibility: hidden;
-    }
-  }
-}
-
-#content{
-  @include clearfix;
-  @include tablet{
-    width: 68%;
-    float: left;
-    position: relative;
-    top: -6em;
-  }
-  .hentry{
-    margin: 2em 0;
-    line-height: 1.5;
-    font-size: 1.1em;
-    .postmeta{
-      background: $secondary-color;
-      padding: 2%;
-      font-size: .8em;
-      clear: both;
-      span{
-        padding-right: 1.4em;
-        opacity: .7;
-      }
-    }
-  }
-  .hentry .wp-post-image.size-thumbnail{
-    float:right;
-    margin-left:1em;
-  }
-  /* full width main content*/
-  .page-template-template-no-sidebar &,
-  .page-template-template-sitemap &,
-  .home.page &{
-    width:98%;
-    float:none;
-    left:0;
-  }
-  .page-title{
-    margin-top: 20%;
   }
 }
 
@@ -296,23 +253,6 @@ li{
   @include clearfix;
   padding: 2%;
   border-top:solid 1px rgba(black, .15);
-}
-
-article{
-  margin-bottom: 3em;
-}
-
-.postmeta{
-  clear:both;
-  background: #eee;
-  padding: .2em;
-  font-size: .9em;
-}
-
-.postmeta span:not(:last-child){
-  border-right: solid 1px #ccc;
-  margin-right: .3em;
-  padding-right: .3em;
 }
 
 a.button,

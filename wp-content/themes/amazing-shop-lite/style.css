@@ -11,7 +11,7 @@ Text Domain: amazing-shop-lite
 Tags: custom-colors, blog, two-columns, custom-header
 */
 body {
-  max-width: 60em;
+  max-width: 100%;
   margin: 0 auto;
   font-family: Calibri, Arial, sans-serif; }
 
@@ -113,7 +113,7 @@ li {
     @media (min-width: 700px) {
       #header .header-bar nav {
         position: absolute;
-        top: 64%;
+        top: 63%;
         right: 35%;
         background: #000;
         margin-left: 180px;
@@ -159,42 +159,6 @@ li {
           float: none; }
       #header .header-bar li:hover ul {
         display: block; }
-    #header .header-bar span.screen-reader-text {
-      visibility: hidden; }
-
-#content {
-  /* full width main content*/ }
-  #content:after {
-    display: block;
-    content: '';
-    clear: both; }
-  @media (min-width: 700px) {
-    #content {
-      width: 68%;
-      float: left;
-      position: relative;
-      top: -6em; } }
-  #content .hentry {
-    margin: 2em 0;
-    line-height: 1.5;
-    font-size: 1.1em; }
-    #content .hentry .postmeta {
-      background: rgba(0, 0, 0, 0.1);
-      padding: 2%;
-      font-size: .8em;
-      clear: both; }
-      #content .hentry .postmeta span {
-        padding-right: 1.4em;
-        opacity: .7; }
-  #content .hentry .wp-post-image.size-thumbnail {
-    float: right;
-    margin-left: 1em; }
-  .page-template-template-no-sidebar #content, .page-template-template-sitemap #content, .home.page #content {
-    width: 98%;
-    float: none;
-    left: 0; }
-  #content .page-title {
-    margin-top: 20%; }
 
 @media (min-width: 700px) {
   #sidebar {
@@ -213,20 +177,6 @@ li {
     display: block;
     content: '';
     clear: both; }
-
-article {
-  margin-bottom: 3em; }
-
-.postmeta {
-  clear: both;
-  background: #eee;
-  padding: .2em;
-  font-size: .9em; }
-
-.postmeta span:not(:last-child) {
-  border-right: solid 1px #ccc;
-  margin-right: .3em;
-  padding-right: .3em; }
 
 a.button,
 button.button,
