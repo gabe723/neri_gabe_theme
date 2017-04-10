@@ -23,9 +23,6 @@ body {
 .wrapper {
   max-width: 90%;
   margin: 0 auto; }
-  @media (min-width: 700px) {
-    .wrapper {
-      padding: 2%; } }
 
 * {
   box-sizing: border-box; }
@@ -163,7 +160,7 @@ li {
 
 @media (min-width: 700px) {
   #sidebar {
-    width: 30%;
+    width: 20%;
     float: right; } }
 #sidebar ul li {
   padding-left: 1rem; }

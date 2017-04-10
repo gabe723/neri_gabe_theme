@@ -71,9 +71,6 @@ body{
 .wrapper{
   max-width: $max-width;
   margin: 0 auto;
-  @include tablet{
-    padding:2%;
-  }
 }
 
 *{
@@ -244,7 +241,7 @@ li{
 
 #sidebar{
   @include tablet{
-    width: 30%;
+    width: 20%;
     float: right;
   }
   ul li{
