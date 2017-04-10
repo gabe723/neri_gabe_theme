@@ -32,14 +32,6 @@ $max-width:     90%;
   }
 }
 
-@mixin clearfix(){
-  .cf:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
 @mixin admin-sticky-fix( $offset: 0 ){
   $narrow-offset: 46px;
   $wide-offset: 0px;
@@ -60,6 +52,14 @@ $max-width:     90%;
   top: 0; bottom: 0;
   left: 0; right: 0;
   margin: auto;
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 body{
@@ -160,7 +160,7 @@ li{
   /* Menu */
   .header-bar{
     background: rgba(0, 0, 0, .6);
-    @include clearfix;
+    @extend .clearfix;
     @include tablet{
       background: black;
       position: fixed;
@@ -257,10 +257,8 @@ li{
 }
 
 footer{
-  @include clearfix;
-  @include tablet{
-    padding: 2%;
-  }
+  clear: both;
+  padding: 2%;
 }
 
 a.button,

@@ -10,6 +10,11 @@ Version: 0.1
 Text Domain: amazing-shop-lite
 Tags: custom-colors, blog, two-columns, custom-header
 */
+.clearfix:after, #header .header-bar:after {
+  content: "";
+  display: table;
+  clear: both; }
+
 body {
   max-width: 100%;
   margin: 0 auto;
@@ -89,10 +94,6 @@ li {
       right: 41%; } }
   #header .header-bar {
     background: rgba(0, 0, 0, 0.6); }
-    #header .header-bar .cf:after {
-      content: "";
-      display: table;
-      clear: both; }
     @media (min-width: 700px) {
       #header .header-bar {
         background: black;
@@ -170,13 +171,9 @@ li {
   width: 100%;
   float: none; }
 
-footer .cf:after {
-  content: "";
-  display: table;
-  clear: both; }
-@media (min-width: 700px) {
-  footer {
-    padding: 2%; } }
+footer {
+  clear: both;
+  padding: 2%; }
 
 a.button,
 button.button,

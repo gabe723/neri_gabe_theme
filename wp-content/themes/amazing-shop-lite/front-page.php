@@ -47,7 +47,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 		//get up to 5 latest products
 		$products = new WP_Query( array(
 			'post_type'      => 'product',
-			'posts_per_page' => 5,
+			'posts_per_page' => 12,
 		) );
 
 		if ( $products->have_posts() ) {
