@@ -9,16 +9,21 @@
 */
 ?>
 
-<footer id="colophon" role="contentinfo">
+<footer id="colophon" class="cf">
 
 	<?php amazing_shop_lite_logo(); ?>
-  <?php dynamic_sidebar( 'Footer Area' ); //registered in functions.php ?>
+	<?php dynamic_sidebar( 'Footer Area' ); //registered in functions.php ?>
 
-</footer><!-- #colophon -->
-</div><!-- .site-content-contain -->
-</div><!-- #page -->
+</footer>
+<!-- #colophon -->
+</div>
+<!-- #site-content -->
+</div>
+<!-- .site-content-contain -->
 
 <?php wp_footer(); //hook. REQUIRED for plugins and admin bar to work ?>
 
+</div>
+<!-- #page -->
 </body>
 </html>

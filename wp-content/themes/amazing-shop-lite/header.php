@@ -13,7 +13,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Playfair+Display:400,900">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700%7CPlayfair+Display:400,900">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11"> <!-- TODO: WTF IS THIS?? -->
 
@@ -22,7 +22,7 @@
 
 <body <?php body_class(); ?>>
 	<div id="page" class="site">
-		<header role="banner" id="header">
+		<header id="header">
 			<div class="header-bar">
 
 				<?php
@@ -43,8 +43,6 @@
 				}
 				?>
 
-				<h2><?php bloginfo( 'description' ); ?></h2>
-
 				<?php wp_nav_menu( array(
 					'theme_location' => 'main_menu',
 					'container' 		 => 'nav', //div, nav or false
@@ -55,4 +53,4 @@
 			</div>
 		</header><!-- #masthead -->
 		<div class="site-content-contain">
-			<div id="content" class="site-content">
+			<div id="site-content" class="site-content">

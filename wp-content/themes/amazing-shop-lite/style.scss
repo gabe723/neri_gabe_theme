@@ -18,7 +18,7 @@ $secondary-color:rgba(black, .1);
 $tablet-width:  700px;
 $desktop-width: 1000px;
 
-$max-width:     75em;
+$max-width:     90%;
 
 @mixin tablet{
   @media (min-width: #{$tablet-width}){
@@ -33,9 +33,9 @@ $max-width:     75em;
 }
 
 @mixin clearfix(){
-  &:after{
-    display: block;
-    content: '';
+  .cf:after {
+    content: "";
+    display: table;
     clear: both;
   }
 }
@@ -53,6 +53,13 @@ $max-width:     75em;
       top: $wide-offset;
     }
   }
+}
+
+@mixin center {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
 }
 
 body{
@@ -104,7 +111,7 @@ li{
   background-image: url('http://lorempixel.com/output/abstract-q-c-1200-400-9.jpg');
   background-size: cover;
   @include tablet{
-    min-height: 40vh;
+    height: auto;
     text-align: left;
     border-bottom: solid 3px $accent-color;
   }
@@ -249,10 +256,11 @@ li{
   }
 }
 
-#footer{
+footer{
   @include clearfix;
-  padding: 2%;
-  border-top:solid 1px rgba(black, .15);
+  @include tablet{
+    padding: 2%;
+  }
 }
 
 a.button,

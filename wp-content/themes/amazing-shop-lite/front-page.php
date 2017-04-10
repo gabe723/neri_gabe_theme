@@ -53,7 +53,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 		if ( $products->have_posts() ) {
 			?>
 			<div class="featured-products">
-				<h2>Featured Products:</h2>
+				<h2>Featured Products</h2>
 				<ul>
 					<?php while( $products->have_posts() ){
 						$products->the_post();
