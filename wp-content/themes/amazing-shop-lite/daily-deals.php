@@ -1,11 +1,10 @@
 <?php
+/*
+Template Name: Dialy Deals
+*/
+ 
 /**
-* The front page of our website
-*
-* This is the most generic template file in a WordPress theme
-* and one of the two required files for a theme (the other being style.css).
-* It is used to display a page when nothing more specific matches a query.
-* E.g., it puts together the home page when no home.php file exists.
+* The "Daily Deals" page
 *
 * @link https://codex.wordpress.org/Template_Hierarchy
 *
@@ -32,7 +31,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 				?>
 
 				<h1 class="page-title">
-					We Have What You Need.
+					Here are Today's Top Deals!
 				</h1>
 				<div class="entry-content">
 					<?php the_content(); ?>
@@ -74,6 +73,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 			</main>
 			<!-- end #content -->
 
+			<?php get_sidebar(); ?>
 		</div>
 		<!-- end .wrapper -->
 
