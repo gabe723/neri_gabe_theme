@@ -2,7 +2,7 @@
 /*
 Template Name: Dialy Deals
 */
- 
+
 /**
 * The "Daily Deals" page
 *
