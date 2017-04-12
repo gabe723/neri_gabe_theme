@@ -197,8 +197,8 @@ function amazing_shop_lite_size()
 /**
 * Customization API additions - custom colors, fonts, layouts, etc.
 */
-add_action( 'customize_register', 'platty_customizer' );
-function platty_customizer($wp_customize)
+add_action( 'customize_register', 'amazing_shop_lite_customizer' );
+function amazing_shop_lite_customizer($wp_customize)
 {
 	//register all sections, settings and controls here:
 
@@ -216,7 +216,7 @@ function platty_customizer($wp_customize)
 
 	//Layout options
 	//create new section labeled "Layout"
-	$wp_customize->add_section( 'platty_layout', array(
+	$wp_customize->add_section( 'amazing_shop_lite_layout', array(
 		'title'      => 'Layout',
 		'capability' => 'edit_theme_options',
 		'priority'   => 40,
@@ -227,7 +227,7 @@ function platty_customizer($wp_customize)
 	) );
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'header_size_control', array(
 		'label'    => 'Header Height',
-		'section'  => 'platty_layout',
+		'section'  => 'amazing_shop_lite_layout',
 		'settings' => 'header_size',
 		'type'     => 'radio',
 		'choices'  => array(
@@ -246,26 +246,26 @@ function platty_customizer($wp_customize)
 		'section'  => 'title_tagline', //built in "site identity" section
 		'settings' => 'secondary_logo',
 	) ) );
-} //end platty_customizer
+} //end amazing_shop_lite_customizer
 
 /**
 * Customized CSS - displays the customizer changes
 */
-add_action( 'wp_head', 'platty_custom_css' );
-function platty_custom_css()
+add_action( 'wp_head', 'amazing_shop_lite_custom_css' );
+function amazing_shop_lite_custom_css()
 {
 	switch ( get_theme_mod( 'header_size' ) )
 	{
 		case 'small':
-		$size = '20vh';
+		$size = '20%';
 		break;
 
 		case 'medium':
-		$size = '30vh';
+		$size = '30%';
 		break;
 
 		default:
-		$size = '40vh';
+		$size = '40%';
 		break;
 	} //end switch
 	?>

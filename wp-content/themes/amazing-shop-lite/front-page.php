@@ -19,11 +19,6 @@ define( 'WP_USE_THEMES', false ); get_header();
 ?>
 <div class="wrapper">
 	<main id="content">
-		<?php //check to see if the slider plugin exists before running its function
-		if( function_exists( 'gn_slider' ) ){
-			gn_slider();
-		}
-		?>
 
 		<?php
 		if ( have_posts() ) {
@@ -59,7 +54,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 						$products->the_post();
 						?>
 						<li>
-							<a href="PERMALINK">
+							<a href="<?php the_permalink(); ?>">
 								<?php the_post_thumbnail( 'thumbnail' ); ?>
 								<div class="caption">
 									<h3><?php the_title(); ?></h3>
