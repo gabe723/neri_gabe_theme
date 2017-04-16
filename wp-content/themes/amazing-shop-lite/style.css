@@ -55,7 +55,7 @@ li {
   /* Menu */ }
   @media (min-width: 700px) {
     #header {
-      height: auto;
+      min-height: 40%;
       text-align: left;
       border-bottom: solid 3px dodgerblue; } }
   #header h2 {

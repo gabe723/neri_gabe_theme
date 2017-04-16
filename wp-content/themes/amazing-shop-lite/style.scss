@@ -108,7 +108,7 @@ li{
   background-image: url('http://lorempixel.com/output/abstract-q-c-1200-400-9.jpg');
   background-size: cover;
   @include tablet{
-    height: auto;
+    min-height: 40%;
     text-align: left;
     border-bottom: solid 3px $accent-color;
   }
