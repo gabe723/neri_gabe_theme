@@ -20,15 +20,12 @@ define( 'WP_USE_THEMES', false ); get_header();
 <div class="wrapper">
 	<main id="content">
 
-				<h1 class="page-title">
-					We Have What You Need.
-				</h1>
-				<div class="entry-content">
-					<?php the_content(); ?>
-				</div>
+		<h2 class="page-cta">
+			We Have What You Need.
+		</h2>
 
 		<?php
-		//get up to 5 latest products
+		//get up to 12 latest products
 		$products = new WP_Query( array(
 			'post_type'      => 'product',
 			'posts_per_page' => 12,

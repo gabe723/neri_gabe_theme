@@ -68,7 +68,7 @@ body{
   font-family: Calibri, Arial, sans-serif;
 }
 
-.wrapper{
+#site-content{
   max-width: $max-width;
   margin: 0 auto;
 }
@@ -173,10 +173,10 @@ li{
     nav{
       @include tablet{
         position: absolute;
-        top: 63%;
-        right: 35%;
+        top: 58.5%;
+        right: 28%;
         background: #000;
-        margin-left:180px; /* space for logo */
+        margin-left: 180px; /* space for logo */
       }
     }
     ul{
@@ -237,6 +237,11 @@ li{
       }
     }
   }
+}
+
+#content,
+#main{
+  margin-top: 10%;
 }
 
 #sidebar{

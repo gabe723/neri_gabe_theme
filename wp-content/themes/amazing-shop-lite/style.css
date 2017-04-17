@@ -20,7 +20,7 @@ body {
   margin: 0 auto;
   font-family: Calibri, Arial, sans-serif; }
 
-.wrapper {
+#site-content {
   max-width: 90%;
   margin: 0 auto; }
 
@@ -111,8 +111,8 @@ li {
     @media (min-width: 700px) {
       #header .header-bar nav {
         position: absolute;
-        top: 63%;
-        right: 35%;
+        top: 58.5%;
+        right: 28%;
         background: #000;
         margin-left: 180px;
         /* space for logo */ } }
@@ -157,6 +157,10 @@ li {
           float: none; }
       #header .header-bar li:hover ul {
         display: block; }
+
+#content,
+#main {
+  margin-top: 10%; }
 
 @media (min-width: 700px) {
   #sidebar {
