@@ -21,7 +21,7 @@ body {
   font-family: Calibri, Arial, sans-serif; }
 
 #site-content {
-  max-width: 90%;
+  max-width: 60%;
   margin: 0 auto; }
 
 * {
@@ -112,7 +112,7 @@ li {
       #header .header-bar nav {
         position: absolute;
         top: 58.5%;
-        right: 28%;
+        right: 38.5%;
         background: #000;
         margin-left: 180px;
         /* space for logo */ } }
