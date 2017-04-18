@@ -180,14 +180,11 @@ li {
 .page-cta {
   font-size: 3em; }
 
-.button wc-backward {
+.woocommerce a.button {
   border-radius: 5px;
   color: #fff;
   background-color: #666;
   border: 1px solid gray; }
-
-.woocommerce span.onsale {
-  background-color: none; }
 
 @media (min-width: 700px) {
   #sidebar {

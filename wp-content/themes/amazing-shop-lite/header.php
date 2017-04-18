@@ -13,11 +13,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); //hook. REQUIRED for plugins and admin bar to work *make sure this loads before stylesheet or else you can't override styles! ?>
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700%7CPlayfair+Display:400,900">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>">
 	<link rel="profile" href="http://gmpg.org/xfn/11"> <!-- TODO: WTF IS THIS?? -->
-
-	<?php wp_head(); //hook. REQUIRED for plugins and admin bar to work ?>
 </head>
 
 <body <?php body_class(); ?>>

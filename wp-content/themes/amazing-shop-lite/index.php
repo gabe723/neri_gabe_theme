@@ -58,7 +58,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 				}
 				?>
 			</div>
-
+<?php if (!is_page()): ?>
 			<div class="postmeta">
 				<span class="author">by: <?php the_author(); ?> </span>
 				<span class="date"> <?php the_date(); ?> </span>
@@ -71,6 +71,7 @@ define( 'WP_USE_THEMES', false ); get_header();
 				<span class="tags"><?php the_tags(); ?></span>
 			</div>
 			<!-- end .postmeta -->
+			<?php endif; ?>
 		</article>
 		<!-- end .post -->
 
