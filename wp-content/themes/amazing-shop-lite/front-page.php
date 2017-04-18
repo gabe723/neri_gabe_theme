@@ -19,7 +19,9 @@ define( 'WP_USE_THEMES', false ); get_header();
 ?>
 <div class="wrapper">
 	<main id="content">
-
+		<div id="ad" class="ad ad1 ad-large">
+			<img src="http://lorempixel.com/output/abstract-q-c-1200-100-9.jpg" alt="ad">
+		</div>
 		<h2 class="page-cta">
 			We Have What You Need.
 		</h2>
@@ -52,6 +54,9 @@ define( 'WP_USE_THEMES', false ); get_header();
 					</ul>
 				</div>
 				<?php }//end of custom "product" query loop ?>
+				<div id="ad" class="ad ad2 ad-large">
+					<img src="http://lorempixel.com/output/abstract-q-c-1200-100-9.jpg" alt="ad">
+				</div>
 			</main>
 			<!-- end #content -->
 

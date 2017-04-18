@@ -42,7 +42,7 @@ a {
 
 a:hover,
 a:focus {
-  color: dodgerblue; }
+  color: #35278c; }
 
 li {
   list-style-type: none; }
@@ -56,8 +56,7 @@ li {
   @media (min-width: 700px) {
     #header {
       min-height: 40%;
-      text-align: left;
-      border-bottom: solid 3px dodgerblue; } }
+      text-align: left; } }
   #header h2 {
     display: none; }
     @media (min-width: 700px) {
@@ -67,7 +66,7 @@ li {
     color: white; }
   #header .custom-logo-link {
     display: block;
-    background-color: dodgerblue;
+    background-color: #35278c;
     overflow: hidden; }
     @media (min-width: 700px) {
       #header .custom-logo-link {
@@ -80,20 +79,36 @@ li {
     margin: 0;
     line-height: 2em;
     font-size: 2.5em;
-    padding: 2% 5%; }
-  #header .search-form input {
-    color: black; }
-  @media (min-width: 700px) {
-    #header .search-form {
-      z-index: 50;
-      position: absolute;
-      top: 41%;
-      right: 41%; } }
+    padding: 1% 5%; }
+  #header .search-form {
+    width: 27%; }
+    #header .search-form input {
+      color: #fff; }
+    @media (min-width: 700px) {
+      #header .search-form {
+        z-index: 50;
+        position: absolute;
+        top: 30%;
+        right: 33%; } }
+  #header .search-field {
+    border-radius: 5px 0px 0px 5px;
+    height: 35px;
+    border: none;
+    width: 84%; }
+  #header .search-submit {
+    height: 35px;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: -5px;
+    color: #fff;
+    background-color: #655e90;
+    border: none; }
+    #header .search-submit:hover {
+      background-color: #463e77; }
   #header .header-bar {
     background: rgba(0, 0, 0, 0.6); }
     @media (min-width: 700px) {
       #header .header-bar {
-        background: black;
+        background: darkslateblue;
         position: fixed;
         top: 0;
         left: 0;
@@ -111,9 +126,9 @@ li {
     @media (min-width: 700px) {
       #header .header-bar nav {
         position: absolute;
-        top: 58.5%;
+        top: 59.5%;
         right: 38.5%;
-        background: #000;
+        background: darkslateblue;
         margin-left: 180px;
         /* space for logo */ } }
     #header .header-bar ul {
@@ -126,7 +141,7 @@ li {
       border-right: solid 1px gray;
       position: relative; }
       #header .header-bar li:hover > a {
-        background: dodgerblue; }
+        background: #35278c; }
       @media (min-width: 700px) {
         #header .header-bar li {
           display: inline-block;
@@ -137,14 +152,14 @@ li {
         padding: 2.5%;
         display: block; }
         #header .header-bar li a:hover, #header .header-bar li a:focus {
-          background: dodgerblue; }
+          background: #35278c; }
         @media (min-width: 700px) {
           #header .header-bar li a {
             padding: 0 1em;
             line-height: 50px; } }
       #header .header-bar li ul {
         display: none;
-        background: rgba(30, 144, 255, 0.6);
+        background: rgba(53, 39, 140, 0.6);
         min-width: 320px; }
         @media (min-width: 700px) {
           #header .header-bar li ul {
@@ -161,6 +176,18 @@ li {
 #content,
 #main {
   margin-top: 10%; }
+
+.page-cta {
+  font-size: 3em; }
+
+.button wc-backward {
+  border-radius: 5px;
+  color: #fff;
+  background-color: #666;
+  border: 1px solid gray; }
+
+.woocommerce span.onsale {
+  background-color: none; }
 
 @media (min-width: 700px) {
   #sidebar {

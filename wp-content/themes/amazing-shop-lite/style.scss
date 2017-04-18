@@ -12,7 +12,7 @@ Tags: custom-colors, blog, two-columns, custom-header
 */
 $text-color:    black;
 $link-color:    darkslategray;
-$accent-color:  dodgerblue;
+$accent-color:  #35278c;
 $secondary-color:rgba(black, .1);
 
 $tablet-width:  700px;
@@ -95,7 +95,7 @@ a{
 
 a:hover,
 a:focus{
-  color: dodgerblue;
+  color: #35278c;
 }
 
 li{
@@ -110,7 +110,6 @@ li{
   @include tablet{
     min-height: 40%;
     text-align: left;
-    border-bottom: solid 3px $accent-color;
   }
   h2{
     display: none;
@@ -140,17 +139,35 @@ li{
     margin: 0;
     line-height: 2em;
     font-size: 2.5em;
-    padding: 2% 5%;
+    padding: 1% 5%;
   }
   .search-form{
+    width: 27%;
     input{
-      color:$text-color;
+      color: #fff;
     }
     @include tablet{
       z-index: 50;
       position: absolute;
-      top: 41%;
-      right: 41%;
+      top: 30%;
+      right: 33%;
+    }
+  }
+  .search-field{
+    border-radius: 5px 0px 0px 5px;
+    height: 35px;
+    border: none;
+    width: 84%;
+  }
+  .search-submit{
+    height: 35px;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: -5px;
+    color: #fff;
+    background-color: #655e90;
+    border: none;
+    &:hover{
+      background-color: #463e77;
     }
   }
 
@@ -159,7 +176,7 @@ li{
     background: rgba(0, 0, 0, .6);
     @extend .clearfix;
     @include tablet{
-      background: black;
+      background: darkslateblue;
       position: fixed;
       top: 0;
       left: 0;
@@ -173,9 +190,9 @@ li{
     nav{
       @include tablet{
         position: absolute;
-        top: 58.5%;
+        top: 59.5%;
         right: 38.5%;
-        background: #000;
+        background: darkslateblue;
         margin-left: 180px; /* space for logo */
       }
     }
@@ -242,6 +259,21 @@ li{
 #content,
 #main{
   margin-top: 10%;
+}
+
+.page-cta{
+  font-size: 3em;
+}
+
+.button wc-backward {
+  border-radius: 5px;
+  color: #fff;
+  background-color: #666;
+  border: 1px solid gray;
+}
+
+.woocommerce span.onsale{
+  background-color: none;
 }
 
 #sidebar{
