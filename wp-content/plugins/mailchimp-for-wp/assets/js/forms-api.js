@@ -50,7 +50,7 @@ function handleFormRequest(form, action, errors, data) {
 		} else {
 			// form was successfully submitted
 			forms.trigger('success', [form, data]);
-			forms.trigger(form.id + ',success', [form, data]);
+			forms.trigger(form.id + '.success', [form, data]);
 
 			// subscribed / unsubscribed
 			forms.trigger(action + "d", [form, data]);
@@ -335,7 +335,7 @@ function serialize(form, options) {
             }
 
             // if options empty is true, continue only if its radio
-            if (!val && element.type == 'radio') {
+            if (val == undefined && element.type == 'radio') {
                 continue;
             }
         }

@@ -2,25 +2,30 @@
 Contributors: austyfrosty, DH-Shredder, MartyThornley, chrisjean,
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XQRHECLPQ46TE
 Tags: featured image, admin, column
-Requires at least: 3.0
-Tested up to: 4.1
+Requires at least: 4.4
+Tested up to: 4.8
 Stable tag: trunk
 
 Adds a column to any post type edit screen with the featured image if it exists.
 
 == Description ==
 
-As of version 2.2 you can select which post types you'd like to have the image column. It simply adds a column before the title (far left) the show's the posts featured image if it's supported and exists.
+As of version 0.2.2 you can select which post types you'd like to have the image column.
+It simply adds a column before the title (far left) the show's the posts featured image if it's supported and exists.
 
-Want to change the default image? Simply filter you own image by useing `featured_image_column_default_image` or filter your own CSS by using `featured_image_column_css`.
+Want to change the default image? Simply filter you own image by using `featured_image_column_default_image`
+or filter your own CSS by using the `featured_image_column_css` filter hook.
 
 = Example actions/filters =
 
 **Add support for a custom default image**
 `
 function my_custom_featured_image_column_image( $image ) {
-	if ( !has_post_thumbnail() )
+	if ( !has_post_thumbnail() ) {
 		return trailingslashit( get_stylesheet_directory_uri() ) . 'images/featured-image.png';
+	}
+
+	return $image;
 }
 add_filter( 'featured_image_column_default_image', 'my_custom_featured_image_column_image' );
 `
@@ -61,15 +66,28 @@ Follow the steps below to install the plugin.
 1. Upload the `featured-image-column` directory to the /wp-content/plugins/ directory. OR click add new plugin in your WordPress admin.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-== Frequently Asked Questions ==
-
-= Nothing yet =
-
 == Screenshots ==
 
 1. Post edit.php screen.
 
 == Changelog ==
+
+= Version 0.3.2 (06/26/17) =
+
+* Missed short-array syntax updates for PHP < 5.4 compatibility.
+
+= Version 0.3.1 (06/26/17) =
+
+* Fix for PHP versions < 5.4.
+* Please update your PHP versions!
+
+= Version 0.3 (06/25/17) =
+
+* Code cleanup.
+* Tested with WordPress 4.8 new minimum version requirement set to 4.4.
+* Image columns work correctly when using Quick Edit now (no more collapsing)!
+* Removed use of additional wp_cache.s
+* Toggling setting controls for post types works again (turn on/off featured image column per post type).
 
 = Version 0.2.3 (04/4/15) =
 
@@ -143,30 +161,26 @@ Follow the steps below to install the plugin.
 
 == Upgrade Notice ==
 
-= 0.2.2 =
+= 0.3 =
+Code cleanup, compatibility updates for WordPress 4.8, quick edit no longer collapses the columns and the settings actually toggle post_types on/off!
 
-* Happy holidays! If you like the updates please consider donating. PayPal: austin@thefrosty.com. WP 4.1 and post type settings.
+= 0.2.2 =
+Happy holidays! If you like the updates please consider donating. PayPal: austin@thefrosty.com. WP 4.1 and post type settings.
 
 = 0.2.1 =
-
-* Happy holidays! If you like the updates please consider donating. PayPal: austin@thefrosty.com. WP 3.8 and PHP 5.3+ compat.
+Happy holidays! If you like the updates please consider donating. PayPal: austin@thefrosty.com. WP 3.8 and PHP 5.3+ compat.
 
 = 0.1.9 =
-
-* Happy 311 day! Finally fixed duplicate image output. Yay for cache array().
+Happy 311 day! Finally fixed duplicate image output. Yay for cache array().
 
 = 0.1.7 =
-
-* Working on fixed repeating images.
+Working on fixed repeating images.
 
 = 0.1.6 =
-
-* Cleaned up code thanks to Chris @ iThemes. All errors should be suppressed and clear.
+Cleaned up code thanks to Chris @ iThemes. All errors should be suppressed and clear.
 
 = 0.1.2 =
-
-* Code cleanup, attempt at fixing a fatal error when no posts exist (still in progress).
+Code cleanup, attempt at fixing a fatal error when no posts exist (still in progress).
 
 = 0.1.1 =
-
-* Adds support for public $post_type's that support 'post-thumbnails'.
+Adds support for public $post_type's that support 'post-thumbnails'.

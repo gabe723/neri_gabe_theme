@@ -5,7 +5,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 2.15
+Stable tag: 2.20
 
 Perform 50+ security tests with 1 click and get a clear picture of how secure your site is and how to protect it from hackers. Super-easy to use!
 
@@ -38,13 +38,12 @@ Test the plugin now on <a href="https://wpsecurityninja.com/">Security Ninja sit
 
 **What others say about the plugin**
 
-* <a href="http://websmush.com/security-ninja-review/">Web smush</a>
 * <a href="http://www.wpexplorer.com/wordpress-security-can-security-ninja-keep-your-site-safe/">WPExplorer</a>
 * <a href="http://tutorials7.com/security-ninja-review.html">Tutorials 7</a>
 * <a href="https://wploop.com/security-ninja-review/">WP Loop</a>
 * <a href="http://www.bitcatcha.com/blog/2016/security-ninja-plugin-review/">Bitcatcha</a>
 
-> > Security Ninja **PRO** has 4 additional modules: Core Scanner, Malware Scanner, Events Logger and Scheduled Scanner. They provide an all-in-one security solution for any site. With premium support and continuous updates Security Ninja **PRO** is a perfect tool to keep your site safe. <a href="https://wpsecurityninja.com/">See what the PRO version offers</a>
+> > Security Ninja **PRO** has 5 additional modules: Core Scanner, Malware Scanner, Auto Fixer Events Logger & Scheduled Scanner. They provide an all-in-one security solution for any site. With premium support and continuous updates Security Ninja **PRO** is a perfect tool to keep your site safe. <a href="https://wpsecurityninja.com/">See what the PRO version offers</a>
 
 
 
@@ -110,6 +109,12 @@ We did our very best to make Security Ninja compatible with all plugins and them
 
 
 == Changelog ==       
+
+= 2.20 =
+* 2017/05/19
+* fixed 3 tests
+* bug fixes
+* lower PRO price
 
 = 2.15 =
 * 2016/12/08

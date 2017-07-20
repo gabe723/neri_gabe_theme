@@ -54,6 +54,7 @@ final class NF_Actions_Email extends NF_Abstracts_Action
         if ( has_filter( 'ninja_forms_get_fields_sorted' ) ) {
             $fields_by_key = array();
             foreach( $data[ 'fields' ] as $field ){
+                if( is_null( $field ) ) continue;
                 if( is_array( $field ) ){
                     if( ! isset( $field[ 'key' ] ) ) continue;
                     $key = $field[ 'key' ];
@@ -113,8 +114,8 @@ final class NF_Actions_Email extends NF_Abstracts_Action
             foreach( (array) $email_addresses as $email ){
                 $email = trim( $email );
                 if ( false !== strpos( $email, '<' ) && false !== strpos( $email, '>' ) ) {
-                    preg_match('/(?<=<).*?(?=>)/', $email, $email);
-                    $email = $email[ 0 ];
+                    preg_match('/(?:<)[^>]*(?:>)/', $email, $email);
+                    $email = $email[ 1 ];
                 }
                 if( ! is_email( $email ) ) {
                     $errors[ 'email_' . $email ] = sprintf( __( 'Your email action "%s" has an invalid value for the "%s" setting. Please check this setting and try again.', 'ninja-forms'), $action_settings[ 'label' ], $setting );
@@ -223,7 +224,12 @@ final class NF_Actions_Email extends NF_Abstracts_Action
             $ignore = array(
                 'hr',
                 'submit',
-                'html'
+                'html',
+                'creditcardcvc',
+                'creditcardexpiration',
+                'creditcardfullname',
+                'creditcardnumber',
+                'creditcardzip',
             );
 
             $ignore = apply_filters( 'ninja_forms_csv_ignore_fields', $ignore );

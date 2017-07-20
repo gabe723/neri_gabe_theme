@@ -4,7 +4,7 @@ Plugin Name: Security Ninja
 Plugin URI: https://wpsecurityninja.com/
 Description: Check your site for <strong>security vulnerabilities</strong> and get precise suggestions for corrective actions on passwords, user accounts, file permissions, database security, version hiding, plugins, themes and other security aspects.
 Author: Web factory Ltd
-Version: 2.15
+Version: 2.20
 Author URI: http://www.webfactoryltd.com/
 
 
@@ -241,13 +241,14 @@ class wf_sn {
     if (!wf_sn::is_plugin_page()) {
       return;
     }
-    
-    $promo_delta = 1 * HOUR_IN_SECONDS;
+
+    $promo_delta = 2 * HOUR_IN_SECONDS;
     $options = get_option(WF_SN_OPTIONS_KEY);
     
     if (current_time('timestamp') - $options['first_install'] < $promo_delta) {
-      $time = date(get_option('time_format'), $options['first_install'] + $promo_delta);
-      echo '<div class="notice notice-error notice-promo"><p>We\'ve prepared a special <b>25% welcoming discount</b> for you on <a href="' . wf_sn::generate_sn_web_link('welcome_link', null, array('coupon' => 'welcome')) . '" target="_blank">Security Ninja PRO</a> available <b>only until ' . $time . ' today</b>.<br>PRO has <b>4 extra modules</b> - Core Scanner, Malware Scanner, Events Logger &amp; Scheduled Scanner! <a class="button button-primary" href="' . wf_sn::generate_sn_web_link('welcome_button', null, array('coupon' => 'welcome')) . '" target="_blank">BUY NOW</a></p></div>';
+      $time = date(get_option('time_format'), $options['first_install'] + $promo_delta) . 'h';
+      echo '<div class="notice notice-error notice-promo"><p>We\'ve prepared a special <b>25% welcoming discount</b> for you on <a href="' . wf_sn::generate_sn_web_link('welcome_link', '/', array('coupon' => 'welcome'), 'pricing') . '" target="_blank">Security Ninja PRO</a> available <b>only until ' . $time . ' today</b>.';
+      echo '<br>PRO has <b>5 extra modules</b> - Core Scanner, Malware Scanner, Auto Fixer, Events Logger &amp; Scheduled Scanner! <a class="button button-primary" href="' . wf_sn::generate_sn_web_link('welcome_button', '/', array('coupon' => 'welcome'), 'pricing') . '" target="_blank">BUY NOW</a></p></div>';
     }
   } // promo_notice
 
@@ -264,15 +265,15 @@ class wf_sn {
       echo '<div id="sn_overlay"><div class="sn-overlay-wrapper">';
       echo '<div class="inner">';
 
-      // Title
+      // title
       echo '<div class="wf-sn-title">
              <h2><img src="' . WF_SN_PLUGIN_URL . 'images/security-ninja-logo.png" alt="Security Ninja" title="Security Ninja"></h2>
            </div>';
 
-      // Outer
+      // outer
       echo '<div class="wf-sn-overlay-outer">';
 
-      // Content
+      // content
       echo '<div class="wf-sn-overlay-content">';
       echo '<div id="sn-site-scan" style="display: none;">';
       echo '<h3>Security Ninja is analyzing your site.<br/>It will only take a few moments ...</h3>';
@@ -300,7 +301,7 @@ class wf_sn {
 
   // ad for add-on
   static function core_ad_page() {
-    echo '<div class="submit-test-container"><p><b>Core Scanner</b> is a module in Security Ninja PRO. It compares all your core WordPress files (1100+) with the secure master copy maintained by WordPress.org. With one click you will know if even a byte was changed in any file. If so, you can imediatelly recover the original version. <b>Perfect for restoring hacked sites!</b></p>
+    echo '<div class="submit-test-container"><p><b>Core Scanner</b> is a module in <b>Security Ninja PRO</b>. It compares all your core WordPress files (over 1,200) with the secure master copy maintained by WordPress.org. With one click you will know if even a byte was changed in any file. If so, you can imediatelly recover the original version. <b>Perfect for restoring hacked sites!</b></p>
 <p><a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_core_scanner', '/core-scanner/') . '" class="button-primary input-button">Find out more</a></p></div>';
 
     echo '<table class="addon-ad" width="100%"><tr><td width="50%" valign="top">';
@@ -330,11 +331,98 @@ class wf_sn {
     echo '<a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_core_scanner', '/core-scanner/') . '" title="Core Scanner add-on"><img style="max-width: 100%;" src="' .  plugin_dir_url(__FILE__) . 'images/core-scanner.jpg" title="Core Scanner add-on" alt="Core Scanner add-on" /></a>';
     echo '</td></tr></table>';
   } // core_ad_page
+  
+  // ad for add-on
+  static function pro_ad_page() {
+    echo '<div class="submit-test-container"><p>Getting hacked sucks! We created <b>Security Ninja PRO</b> more than six years ago to <b>save you money, time and nerves</b>. With five additional PRO modules your site will be less prone to attacks, you\'ll have a clear understanding of what\'s going on if any attacks do occur, and cleaning up a site in a worse-case scenario will be a breeze. Save yourself hours of frustration and <b>hundreds of dollars in repair fees</b> by upgrading to Security Ninja PRO.</p>
+<p><a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_pro', '/') . '" class="button-primary input-button">Find out more</a></p></div>';
+
+    echo '<div class="pricing-table">
+              <div class="pricing-column">
+            <div class="pricing-plan">
+              <div class="header">
+                <h3>Forever Unlimited</h3>
+                <span class="price">$199</span>
+        <span class="note">Never pay us another dollar again</span>
+              </div>
+              <div class="body">
+                <ul>
+                  <li>install on 99 sites (yours &amp; client\'s)</li>
+                  <li>lifetime updates</li>
+          <li>lifetime premium USA based support</li>
+                  <li>all PRO modules</li>
+                </ul>
+                <div class="buy-btn"><a class="button button-primary input-button" href="https://wpsecurityninja.com/buy/?p=sn-pro-forever&r=SN-' . wf_sn::$version . '" target="_blank">Buy Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-column">
+            <div class="pricing-plan highlited">
+              <div class="header">
+                <h3>Multi Site</h3>
+                <span class="price">$79</span>
+        <span class="note">Perfect if you have more than one site</span>
+              </div>
+              <div class="body">
+                <ul>
+                  <li>install on 99 sites</li>
+                  <li>1 year of updates</li>
+          <li>1 year of premium USA based support</li>
+                  <li>all PRO modules</li>
+                </ul>
+                <div class="buy-btn"><a class="button button-primary input-button" href="https://wpsecurityninja.com/buy/?p=sn-pro-multi&r=SN-' . wf_sn::$version . '" target="_blank">Buy Now</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-column">
+            <div class="pricing-plan">
+              <div class="header">
+                <h3>Single site</h3>
+                <span class="price">$29</span>
+        <span class="note">For single site owners</span>
+              </div>
+              <div class="body">
+                <ul>
+          <li>install on 1 site</li>
+                  <li>1 year of updates</li>
+          <li>1 year of premium USA based support</li>
+                  <li>all PRO modules</li>
+                </ul>
+                <div class="buy-btn"><a class="button button-primary input-button" href="https://wpsecurityninja.com/buy/?p=sn-pro-single&r=SN-' . wf_sn::$version . '" target="_blank">Buy Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>';
+  } // pro_ad_page
+  
+  // ad for add-on
+  static function autofixer_ad_page() {
+    echo '<div class="submit-test-container"><p><b>Auto Fixer</b> is a module in <b>Security Ninja PRO</b>. If you don\'t like creating backups, editing files, messing with code and getting your hands dirty - it will do all of that for you! It fixes over 30 security issues with one click. Perfect if you\'re a <b>beginner</b> or in a <b>time crunch</b> and don\'t want to fix stuff for hours.
+    </p>
+<p><a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_core_scanner', '/auto-fixer/') . '" class="button-primary input-button">Find out more</a></p></div>';
+
+    echo '<table class="addon-ad" width="100%"><tr><td width="50%" valign="top">';
+    echo '<ul class="sn-list">
+<li>fix more than 30 issues with <strong>one click</strong></li>
+<li>quickly <strong>make your site secure</strong> without spending hours modifying PHP code</li>
+<li>auto-backup in case something goes wrong</li>
+<li>perfect for beginners</li>
+<li>detailed explanation of all fixes</li>
+<li>complete integration with Ninja\'s easy-to-use GUI</li>
+</ul>';
+
+    echo '<p><a href="#" class="hide_tab" data-tab-id="autofixer" title="Hide this tab"><i>No thank you, I\'m not interested (hide this tab)</i></a></p>';
+
+    echo '</td><td>';
+    echo '<a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_core_scanner', '/auto-fixer/') . '" title="Auto Fixer add-on"><img style="max-width: 100%;" src="' .  plugin_dir_url(__FILE__) . 'images/auto-fixer.png" title="Auto Fixer add-on" alt="Auto Fixer add-on" /></a>';
+    echo '</td></tr></table>';
+  } // autofixer_ad_page
 
   
   // ad for add-on
   static function schedule_ad_page() {
-    echo '<div class="submit-test-container"><p><b>Scheduled Scanner</b> is a module in Security Ninja PRO. It gives you an additional peace of mind by automatically running Security Ninja and Core Scanner tests every day. If any changes occur or your site gets hacked you\'ll immediately get notified via email</p>
+    echo '<div class="submit-test-container"><p><b>Scheduled Scanner</b> is a module in <b>Security Ninja PRO</b>. It gives you an additional peace of mind by automatically running Security Ninja and Core Scanner tests every day. If any changes occur or your site gets hacked you\'ll immediately get notified via email</p>
     <p><a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_scheduled_scanner', '/scheduled-scanner/') . '" class="button-primary input-button">Find out more</a></p>
     </div>';
 
@@ -359,7 +447,7 @@ class wf_sn {
 
   // ad for add-on
   static function logger_ad_page() {
-    echo '<div class="submit-test-container"><p><b>Events Logger</b> is a module in Security Ninja PRO. It monitors, tracks and reports every change on your WordPress site, both in the admin and on the frontend. More than 50 events are instantly tracked with all details!</p><p>
+    echo '<div class="submit-test-container"><p><b>Events Logger</b> is a module in <b>Security Ninja PRO</b>. It monitors, tracks and reports every change on your WordPress site, both in the admin and on the frontend. More than 50 events are instantly tracked with all details!</p><p>
     <a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_events_logger', '/events-logger/') . '" class="button-primary input-button">Find out more</a></p></div>';
 
     echo '<table class="addon-ad" width="100%"><tr><td width="50%" valign="top">';
@@ -389,7 +477,7 @@ class wf_sn {
 
   // ad for add-on
   static function malware_ad_page() {
-    echo '<div class="submit-test-container"><p><b>Malware Scanner</b> is a module in Security Ninja PRO. It scans all of plugin, theme and custom <i>wp-content</i> files as well as the options database table in search for malware and other suspicious code.</p>
+    echo '<div class="submit-test-container"><p><b>Malware Scanner</b> is a module in <b>Security Ninja PRO</b>. It scans all of plugin, theme and custom <i>wp-content</i> files as well as the options database table in search for malware and other suspicious code.</p>
     <p><a target="_blank" href="' . wf_sn::generate_sn_web_link('tab_malware_scanner', 'malware-scanner') . '" class="button-primary input-button">Find out more</a></p></div>';
 
     echo '<table class="addon-ad" width="100%"><tr><td width="50%" valign="top">';
@@ -429,6 +517,9 @@ class wf_sn {
     if (!in_array('core', $hidden_tabs)) {
       $tabs[] = array('id' => 'sn_core', 'class' => 'promo_tab', 'label' => 'Core Scanner', 'callback' => array(__CLASS__, 'core_ad_page'));
     }
+    if (!in_array('autofixer', $hidden_tabs)) {
+      $tabs[] = array('id' => 'sn_autofixer', 'class' => 'promo_tab', 'label' => 'Auto Fixer', 'callback' => array(__CLASS__, 'autofixer_ad_page'));
+    }
     if (!in_array('malware', $hidden_tabs)) {
       $tabs[] = array('id' => 'sn_malware', 'class' => 'promo_tab', 'label' => 'Malware Scanner', 'callback' => array(__CLASS__, 'malware_ad_page'));
     }
@@ -438,8 +529,11 @@ class wf_sn {
     if (!in_array('schedule', $hidden_tabs)) {
       $tabs[] = array('id' => 'sn_schedule', 'class' => 'promo_tab', 'label' => 'Scheduled Scanner', 'callback' => array(__CLASS__, 'schedule_ad_page'));
     }
+    if (sizeof($tabs) == 1) {
+      $tabs[] = array('id' => 'sn_pro', 'class' => 'promo_tab', 'label' => 'Security Ninja PRO', 'callback' => array(__CLASS__, 'pro_ad_page'));
+    }
     $tabs = apply_filters('sn_tabs', $tabs);
-
+       
     echo '<div class="wrap">';
     echo '<div class="wf-sn-title">
            <h2><img src="' . WF_SN_PLUGIN_URL . 'images/security-ninja-logo.png" alt="Security Ninja" title="Security Ninja"></h2>
@@ -579,14 +673,17 @@ class wf_sn {
   
   
   // helper function to generate tagged buy links
-  static function generate_sn_web_link($placement = '', $page = '/', $params = array()) {
+  static function generate_sn_web_link($placement = '', $page = '/', $params = array(), $anchor = '') {
     $base_url = 'https://wpsecurityninja.com';
     if ('/' != $page) {
       $page = '/' . trim($page, '/') . '/';  
     }
     $parts = array_merge(array('utm_source' => 'security_ninja', 'utm_medium' => 'plugin', 'utm_content' => $placement, 'utm_campaign' => 'security_ninja_v' . wf_sn::$version), $params);
+    if (!empty($anchor)) {
+      $anchor = '#' . trim($anchor, '#');
+    }
     
-    $out = $base_url . $page . '?' . http_build_query($parts, '', '&amp;');
+    $out = $base_url . $page . '?' . http_build_query($parts, '', '&amp;') . $anchor;
     
     return $out;
   } // generate_sn_web_link

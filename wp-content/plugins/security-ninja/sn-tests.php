@@ -45,7 +45,7 @@ class wf_sn_tests extends WF_SN {
        'score' => 5,
        'msg_ok' => 'All themes are up to date.',
        'msg_bad' => '%s theme(s) are outdated.'),
-     'deactivated_themes' => array('title' => 'Check if there are deactivated themes.',
+     'deactivated_themes' => array('title' => 'Check if there are any deactivated themes.',
        'score' => 3,
        'msg_ok' => 'There are no deactivated themes.',
        'msg_bad' => 'There are %s deactivated themes.'),
@@ -77,10 +77,10 @@ class wf_sn_tests extends WF_SN {
        'score' => 1,
        'msg_ok' => '<i>expose_php</i> PHP directive is turned off.',
        'msg_bad' => '<i>expose_php</i> PHP directive is turned on.'),
-     'user_exists' => array('title' => 'Check if user with username "admin" exists.',
+     'user_exists' => array('title' => 'Check if user with username "admin" and administrator privileges exists.',
        'score' => 4,
-       'msg_ok' => 'User "admin" doesn\'t exist.',
-       'msg_bad' => 'User "admin" exists.'),
+       'msg_ok' => 'Administrator "admin" doesn\'t exist.',
+       'msg_bad' => 'Administrator "admin" exists.'),
      'anyone_can_register' => array('title' => 'Check if "anyone can register" option is enabled.',
        'score' => 3,
        'msg_ok' => '"Anyone can register" option is disabled.',
@@ -167,10 +167,10 @@ class wf_sn_tests extends WF_SN {
        'msg_ok' => 'Uploads folder is not browsable.',
        'msg_warning' => 'Unable to determine status of uploads folder.',
        'msg_bad' => '<a href="%s" target="_blank">Uploads folder</a> is browsable.'),
-     'id1_user_check' => array('title' => 'Test if user with ID "1" exists.',
+     'id1_user_check' => array('title' => 'Test if user with ID "1" and administrator role exists.',
        'score' => 1,
        'msg_ok' => 'Such user does not exist.',
-       'msg_bad' => 'User with ID "1" exists; username: <i>%s</i>.'),
+       'msg_bad' => 'User with ID "1" and administrator role exists; username: <i>%s</i>.'),
      'wlw_meta' => array('title' => 'Check if Windows Live Writer link is present in pages\' header data.',
        'score' => 1,
        'msg_ok' => 'WLW link is not present in the header.',
@@ -216,13 +216,13 @@ class wf_sn_tests extends WF_SN {
        'msg_bad' => 'Account has far too many unnecessary permissions granted.'),
      'ad_events_logger' => array('title' => 'See who logged in, from where &amp; what they did',
        'score' => 0,
-       'msg_warning' => 'Security Ninja PRO keeps a detailed log of everything that\'s happening in your admin. From login records to detailed logs of all user actions - post &amp; comments editing, any options changing ...'),
+       'msg_warning' => '<b>Security Ninja PRO</b> keeps a detailed log of everything that\'s happening on your site. From login records to detailed logs of all user actions - post &amp; comments editing, any options changing ...'),
      'ad_core_scanner' => array('title' => 'Verify integrity of all core files',
        'score' => 0,
-       'msg_warning' => 'Security Ninja PRO compares all core files (more than 1050) with the master, secure copy from WordPress.org and detects even if a one-byte change'),
+       'msg_warning' => '<b>Security Ninja PRO</b> compares all core files (more than 1,200) with the master, secure copy from WordPress.org and detects even if a one letter was changed.'),
      'ad_malware_scanner' => array('title' => 'Scan the database, plugin &amp; theme files for malware',
        'score' => 0,
-       'msg_warning' => 'Security Ninja PRO scans all plugin and theme files as well as the database in search of malware and other suspicious code')
+       'msg_warning' => '<b>Security Ninja PRO</b> scans all plugin and theme files as well as the database in search of malware and other suspicious code')
    );
 
 
@@ -301,10 +301,10 @@ class wf_sn_tests extends WF_SN {
    static function id1_user_check() {
      $return = array();
 
-     $check = get_userdata(1);
-     if ($check) {
+     $check = get_users(array('role' => 'administrator', 'include' => array(1)));         
+     if (!empty($check)) {
        $return['status'] = 0;
-       $return['msg'] = $check->user_login;
+       $return['msg'] = $check[0]->user_login;
      } else {
        $return['status'] = 10;
      }
@@ -570,10 +570,11 @@ class wf_sn_tests extends WF_SN {
 
 
   // check if certain username exists
-  static function user_exists($username = 'admin') {
+  static function user_exists() {
     $return = array();
 
-    if (username_exists($username) ) {
+    $users = get_users(array('role' => 'administrator', 'login' => 'admin'));
+    if (!empty($users)) {
       $return['status'] = 0;
     } else {
       $return['status'] = 10;
@@ -640,12 +641,11 @@ class wf_sn_tests extends WF_SN {
   static function deactivated_themes() {
     $return = array();
 
-    $all_themes = $all_themes_org = wp_get_themes();
-    unset($all_themes['twentysixteen'], $all_themes['twentyseventeen']);
-
-    if((sizeof($all_themes) == 2 && !is_child_theme()) || sizeof($all_themes) > 1){
+    $all_themes = wp_get_themes();
+    
+    if(sizeof($all_themes) > 2 || (sizeof($all_themes) == 2 && !is_child_theme())) {
       $return['status'] = 0;
-      $return['msg'] = sizeof($all_themes_org) - 1;
+      $return['msg'] = sizeof($all_themes) - 1;
     } else {
       $return['status'] = 10;
     }

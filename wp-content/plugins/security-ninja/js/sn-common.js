@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
     });
   }); // run tests
 
-  // show test details/help tab
+  // show test details/help popup
   $('.sn-details a.button').live('click', function(e) {
     if ($(this).hasClass('skip-button')) {
       return true;
@@ -90,6 +90,7 @@ jQuery(document).ready(function($) {
       content = 'Help is not available for this test. Make sure you have the latest version of Security Ninja installed.';
     } else {
       content = '<span class="ui-helper-hidden-accessible"><input type="text"/></span>' + $('#' + test_id + ' .test_description').html();  
+      content += '<hr><h3>Auto Fixer</h3><div id="auto-fixer-content"><p>Auto Fixer is a module in <a href="https://wpsecurityninja.com/?utm_source=security_ninja&utm_medium=plugin&utm_content=test_info_fixer&utm_campaign=security_ninja_v2.20" target="_blank"><b>Security Ninja PRO</b></a>. If you don\'t like creating backups, editing files, messing with code and getting your hands dirty - it will do all of that for you! It fixes over 30 security issues with one click. Perfect if you\'re a <b>beginner</b> or in a <b>time crunch</b> and don\'t want to fix stuff for hours. <a href="https://wpsecurityninja.com/?utm_source=security_ninja&utm_medium=plugin&utm_content=test_info_fixer_get&utm_campaign=security_ninja_v2.20" class="button button-primary" target="_blank"><b>GET the PRO version</b></a></p></div>';
     }
     
     $('#test-details-dialog').html(content);
